@@ -7,3 +7,9 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
     width: 98%;
     margin: 1% 1% 1% 1%;
 }
+
+a:hover {
+    color: white;
+}
+
+:focus {outline:0 !important;}

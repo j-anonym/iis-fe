@@ -1,0 +1,45 @@
+<div class="card-body">
+    <mat-card>
+        <div class="row">
+            <div class="col-sm">
+                <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar class="future"></div>
+                        <mat-card-title>Future Tournaments</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-list *ngFor="let future of futureData">
+                            <mat-list-item> {{future}} </mat-list-item>
+                        </mat-list>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-sm">
+                <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar class="current"></div>
+                        <mat-card-title>Current Tournaments</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-list *ngFor="let current of currentData">
+                            <mat-list-item> {{current}} </mat-list-item>
+                        </mat-list>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+            <div class="col-sm">
+                <mat-card>
+                    <mat-card-header>
+                        <div mat-card-avatar class="past"></div>
+                        <mat-card-title>Past Tournaments</mat-card-title>
+                    </mat-card-header>
+                    <mat-card-content>
+                        <mat-list *ngFor="let past of pastData">
+                            <mat-list-item> {{past}} </mat-list-item>
+                        </mat-list>
+                    </mat-card-content>
+                </mat-card>
+            </div>
+        </div>
+    </mat-card>
+</div>
