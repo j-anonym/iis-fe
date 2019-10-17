@@ -11,9 +11,19 @@ export class AppComponent implements OnInit {
   arr = [];
   decide = false;
 
+  logged = false;
+
   ngOnInit() {
     console.log("hello!");
     this.arr.push("jedna");
     this.arr.push("dva");
+  }
+
+  login() {
+    this.logged = true;
+  }
+
+  logout() {
+    this.logged = false;
   }
 }
