@@ -7,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TournamentsCreateComponent implements OnInit {
 
+  singles = true;
+  gender = '---';
+
   constructor() { }
 
   ngOnInit() {
