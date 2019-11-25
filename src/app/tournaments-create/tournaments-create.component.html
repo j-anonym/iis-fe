@@ -3,25 +3,38 @@
         <mat-card-header>
             <div mat-card-avatar class="create"></div>
             <mat-card-title>Create Tournament</mat-card-title>
-            <mat-card-subtitle>Subtitle... test test</mat-card-subtitle>
+            <mat-card-subtitle>* Indicates required field</mat-card-subtitle>
         </mat-card-header>
         <mat-card-content>
-            <form class="create-form" [formGroup]="createForm" (ngSubmit)="submit(createForm.value)">
+            <form class="create-form" [formGroup]="createForm" (ngSubmit)="submit(createForm.value)" autocomplete="off">
                 <mat-form-field class="example-full-width">
                     <mat-label>Name</mat-label>
                     <input matInput formControlName="name">
+                    <mat-error *ngIf="hasError('name', 'required')"></mat-error>
+                    <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 128 characters</mat-error>
+                    <span matSuffix>*</span>
                 </mat-form-field>
                 
                 <mat-form-field class="example-full-width">
-                    <mat-label>Choose a date</mat-label>
-                    <input matInput [matDatepicker]="picker" formControlName="date">
-                    <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-datepicker #picker></mat-datepicker>
+                    <mat-label>Choose a starting date</mat-label>
+                    <input matInput [matDatepicker]="pickerFrom" formControlName="date_from">
+                    <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerFrom></mat-datepicker>
+                    <span matSuffix>*</span>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Choose an ending date</mat-label>
+                    <input matInput [matDatepicker]="pickerTo" formControlName="date_to">
+                    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerTo></mat-datepicker>
+                    <span matSuffix>*</span>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
                     <mat-label>Place</mat-label>
                     <input matInput formControlName="place">
+                    <span matSuffix>*</span>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
@@ -30,6 +43,7 @@
                         <mat-option value="true">Singles</mat-option>
                         <mat-option value="false">Doubles</mat-option>
                     </mat-select>
+                    <span matSuffix>*</span>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
@@ -39,21 +53,34 @@
                         <mat-option value="W">Women</mat-option>
                         <mat-option value="MW">Mixed</mat-option>
                     </mat-select>
+                    <span matSuffix>*</span>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
                     <mat-label>Capacity</mat-label>
-                    <input type="number" matInput formControlName="capacity">
+                    <mat-select [(value)]="capacity" formControlName="capacity">
+                        <mat-option [value]="2">2</mat-option>
+                        <mat-option [value]="4">4</mat-option>
+                        <mat-option [value]="8">8</mat-option>
+                        <mat-option [value]="16">16</mat-option>
+                        <mat-option [value]="32">32</mat-option>
+                        <mat-option [value]="64">64</mat-option>
+                    </mat-select>
+                    <span matSuffix>*</span>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <mat-label>Winner prize (EUR - €)</mat-label>
+                    <mat-label>Winner prize</mat-label>
                     <input type="number" matInput formControlName="prize">
+                    <span matPrefix>€</span>
+                    <span matSuffix>*</span>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
-                    <mat-label>Registration cost (EUR - €)</mat-label>
+                    <mat-label>Registration cost</mat-label>
                     <input type="number" matInput formControlName="cost">
+                    <span matPrefix>€</span>
+                    <span matSuffix>*</span>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width mt-4">
@@ -62,7 +89,7 @@
                 </mat-form-field>
 
                 <mat-card-actions class="ml-1">
-                    <button mat-raised-button type="submit" color="primary">Create</button>
+                    <button mat-raised-button type="submit" color="primary" [disabled]="!createForm.valid">Create</button>
                     <button mat-raised-button type="reset" color="secondary">Reset</button>
                 </mat-card-actions>
             </form>
