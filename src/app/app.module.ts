@@ -14,6 +14,7 @@ import { TournamentsAllComponent } from './tournaments-all/tournaments-all.compo
 import { TournamentsCreateComponent } from './tournaments-create/tournaments-create.component';
 import { TournamentsManageComponent } from './tournaments-manage/tournaments-manage.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,9 @@ import { MDBBootstrapModule } from 'angular-bootstrap-md';
     MatDatepickerModule,
     MatNativeDateModule,
     MatSelectModule,
-    MDBBootstrapModule.forRoot()
+    MDBBootstrapModule.forRoot(),
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [
     MatDatepickerModule
