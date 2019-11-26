@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TournamentsCreateService } from './tournaments-create.service';
 
 import * as moment from 'moment';
@@ -35,7 +35,7 @@ export class TournamentsCreateComponent implements OnInit {
     });
   }
 
-  public hasError = (controlName: string, errorName: string) =>{
+  public hasError = (controlName: string, errorName: string) => {
     return this.createForm.controls[controlName].hasError(errorName);
   }
 
@@ -43,7 +43,7 @@ export class TournamentsCreateComponent implements OnInit {
     console.log(data.date_from);
     console.log(moment(data.date_from).format('DD/MM/YYYY'));
 
-    this.createService.createTournament(data);
+    this.createService.createTournament(data).subscribe();
     this.openDialog();
   }
 
@@ -57,7 +57,7 @@ export class TournamentsCreateComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(() => {
       let id_created = this.createService.getLastCreatedTournament(1);
-      this.router.navigate(['/tournament/'+id_created]);
+      // this.router.navigate(['/tournament/'+id_created]);
     });
   }
 

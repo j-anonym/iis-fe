@@ -5,13 +5,15 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { TournamentsAllComponent } from './tournaments-all/tournaments-all.component';
 import { TournamentsCreateComponent } from './tournaments-create/tournaments-create.component';
 import { TournamentsManageComponent } from './tournaments-manage/tournaments-manage.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
 
 const routes: Routes = [
   {path: 'test', component: TestComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'tournaments/all', component: TournamentsAllComponent},
   {path: 'tournaments/create', component: TournamentsCreateComponent},
-  {path: 'tournaments/manage', component: TournamentsManageComponent}
+  {path: 'tournaments/manage', component: TournamentsManageComponent},
+  {path: 'admin', component: AdminPageComponent},
 ];
 
 @NgModule({

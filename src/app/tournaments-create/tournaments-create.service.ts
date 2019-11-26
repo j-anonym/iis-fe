@@ -6,10 +6,10 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TournamentsCreateService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   createTournament(body) {
-    this.http.post("http://localhost:8080/api/tournament/create", body);
+    return this.http.post("http://localhost:8080/api/tournament/create", body);
   }
 
   getLastCreatedTournament(id_staff) {

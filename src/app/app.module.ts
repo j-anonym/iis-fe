@@ -5,7 +5,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS } from  '@angular/material';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule, MatInputModule,
+         MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -16,6 +17,8 @@ import { TournamentsManageComponent } from './tournaments-manage/tournaments-man
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TournamentsCreateDialogComponent } from './tournaments-create-dialog/tournaments-create-dialog.component';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.component';
 
 @NgModule({
   declarations: [
@@ -26,16 +29,18 @@ import { TournamentsCreateDialogComponent } from './tournaments-create-dialog/to
     TournamentsAllComponent,
     TournamentsCreateComponent,
     TournamentsManageComponent,
+    AdminPageComponent,
+    AdminPageDialogComponent,
     TournamentsCreateDialogComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatToolbarModule, 
+    MatToolbarModule,
     MatIconModule,
-    MatSidenavModule, 
-    MatListModule, 
+    MatSidenavModule,
+    MatListModule,
     MatButtonModule,
     HttpClientModule,
     MatCardModule,
@@ -49,6 +54,7 @@ import { TournamentsCreateDialogComponent } from './tournaments-create-dialog/to
     ReactiveFormsModule
   ],
   entryComponents: [
+    AdminPageDialogComponent,
     TournamentsCreateDialogComponent
   ],
   providers: [

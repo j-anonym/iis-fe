@@ -1,0 +1,20 @@
+<h1 class="ml-4 mt-4">User administration</h1>
+
+<div class="row align-items-center">
+    <mat-card class="card col-md-6 ml-2 mt-2" *ngFor="let user of users">
+        <mat-card-header>
+            <div mat-card-avatar class="user-image"></div>
+            <mat-card-title> {{ user.name }} {{user.surname}} </mat-card-title>
+            <span class="filler"></span>
+            <img height="25" width="25" src="../../assets/icons/outline_create_black_36dp.png" />
+            <img style="cursor:pointer;" (click)="openDialog(user)" height="25" width="25" src="../../assets/icons/outline_clear_black_36dp.png" />
+        </mat-card-header>
+
+        <mat-card-content>
+            <p class="txt_fields">Birth date: {{ user.birth }}</p>
+            <p class="txt_fields">Type of user: {{ user.type }}</p>
+            <p class="txt_fields">Sex: {{ user.sex }}</p>
+            <p class="txt_fields">Is left handed: {{ user._left_handed }}</p>
+        </mat-card-content>
+    </mat-card>
+</div>
