@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormGroup, FormControl, Validators } from '@angular/forms'
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TournamentsCreateService } from './tournaments-create.service';
 
 @Component({
@@ -13,7 +13,7 @@ export class TournamentsCreateComponent implements OnInit {
   singles = true;
   gender = '---';
 
-  constructor(private createService : TournamentsCreateService) { }
+  constructor(private createService: TournamentsCreateService) { }
 
   ngOnInit() {
     this.createForm = new FormGroup({
@@ -30,7 +30,7 @@ export class TournamentsCreateComponent implements OnInit {
     });
   }
 
-  public hasError = (controlName: string, errorName: string) =>{
+  public hasError = (controlName: string, errorName: string) => {
     return this.createForm.controls[controlName].hasError(errorName);
   }
 

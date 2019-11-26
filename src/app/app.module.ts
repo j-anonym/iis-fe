@@ -16,6 +16,8 @@ import { TournamentsCreateComponent } from './tournaments-create/tournaments-cre
 import { TournamentsManageComponent } from './tournaments-manage/tournaments-manage.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AdminPageComponent } from './admin-page/admin-page.component';
+import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +27,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     TournamentsAllComponent,
     TournamentsCreateComponent,
-    TournamentsManageComponent
+    TournamentsManageComponent,
+    AdminPageComponent,
+    AdminPageDialogComponent
+  ],
+  entryComponents: [
+    AdminPageDialogComponent
   ],
   imports: [
     BrowserModule,

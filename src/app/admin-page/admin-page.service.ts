@@ -1,14 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+
+
 @Injectable({
   providedIn: 'root'
 })
-export class TournamentsCreateService {
+
+export class AdminPageService {
 
   constructor(private http: HttpClient) { }
 
-  createTournament(body) {
-    console.log(body);
+  loadUsers() {
+    return this.http.get('http://localhost:8080/api/person/all');
   }
 }
