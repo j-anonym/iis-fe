@@ -14,9 +14,9 @@ export class AppComponent implements OnInit {
   logged = false;
 
   ngOnInit() {
-    console.log("hello!");
-    this.arr.push("jedna");
-    this.arr.push("dva");
+    console.log('hello!');
+    this.arr.push('jedna');
+    this.arr.push('dva');
   }
 
   login() {
