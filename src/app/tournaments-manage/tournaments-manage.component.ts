@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { TournamentsManageService } from './tournaments-manage.service';
 
 @Component({
   selector: 'app-tournaments-manage',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TournamentsManageComponent implements OnInit {
 
-  constructor() { }
+  tournaments;
+
+  constructor(private manageService: TournamentsManageService) { }
 
   ngOnInit() {
+    this.tournaments = this.manageService.getAllTournamentsByUser(1).subscribe(response => {
+      console.log(response);
+    });
   }
 
 }

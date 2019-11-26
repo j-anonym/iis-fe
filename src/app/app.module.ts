@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule } from  '@angular/material';
+import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule, MatInputModule, MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS } from  '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -15,6 +15,7 @@ import { TournamentsCreateComponent } from './tournaments-create/tournaments-cre
 import { TournamentsManageComponent } from './tournaments-manage/tournaments-manage.component';
 import { MDBBootstrapModule } from 'angular-bootstrap-md';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { TournamentsCreateDialogComponent } from './tournaments-create-dialog/tournaments-create-dialog.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     TournamentsAllComponent,
     TournamentsCreateComponent,
-    TournamentsManageComponent
+    TournamentsManageComponent,
+    TournamentsCreateDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -46,8 +48,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     FormsModule,
     ReactiveFormsModule
   ],
+  entryComponents: [
+    TournamentsCreateDialogComponent
+  ],
   providers: [
-    MatDatepickerModule
+    MatDatepickerModule,
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
   ],
   bootstrap: [AppComponent]
 })

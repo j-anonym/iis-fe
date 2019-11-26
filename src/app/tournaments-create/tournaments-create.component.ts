@@ -2,6 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms'
 import { TournamentsCreateService } from './tournaments-create.service';
 
+import * as moment from 'moment';
+import { TournamentsCreateDialogComponent } from '../tournaments-create-dialog/tournaments-create-dialog.component';
+import { MatDialog } from '@angular/material';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-tournaments-create',
   templateUrl: './tournaments-create.component.html',
@@ -13,7 +18,7 @@ export class TournamentsCreateComponent implements OnInit {
   singles = true;
   gender = '---';
 
-  constructor(private createService : TournamentsCreateService) { }
+  constructor(private createService : TournamentsCreateService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
     this.createForm = new FormGroup({
@@ -35,7 +40,25 @@ export class TournamentsCreateComponent implements OnInit {
   }
 
   submit(data) {
+    console.log(data.date_from);
+    console.log(moment(data.date_from).format('DD/MM/YYYY'));
+
     this.createService.createTournament(data);
+    this.openDialog();
+  }
+
+  openDialog(): void {
+    const dialogRef = this.dialog.open(TournamentsCreateDialogComponent, {
+      disableClose: true,
+      hasBackdrop: true,
+      width: '500px',
+      data: {}
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+      let id_created = this.createService.getLastCreatedTournament(1);
+      this.router.navigate(['/tournament/'+id_created]);
+    });
   }
 
 }
