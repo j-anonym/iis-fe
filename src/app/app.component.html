@@ -25,7 +25,7 @@
       </button>
     </mat-menu>
 
-    <img *ngIf="!logged" class="pointer" src="../assets/icons/perm_identity_36dp.png" (click)="login()">
+    <img *ngIf="!logged" class="pointer" src="../assets/icons/perm_identity_36dp.png" [routerLink]="'/login'">
     <img *ngIf="logged" class="pointer" src="../assets/icons/how_to_reg_36dp.png" [matMenuTriggerFor]="userMenu">
 
     <mat-menu #userMenu="matMenu">
