@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { TournamentsAllService } from './tournaments-all.service';
-import { MatTableDataSource } from '@angular/material';
+import { MatTableDataSource, MatDialog } from '@angular/material';
 import * as moment from 'moment';
+import { TournamentsAllDialogComponent } from '../tournaments-all-dialog/tournaments-all-dialog.component';
+import { Router } from '@angular/router';
+import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-tournaments-all',
@@ -16,17 +19,17 @@ export class TournamentsAllComponent implements OnInit {
 
   next = [];
   nextDataSource;
-  displayNext: string[] = ['name', 'date_from'];
+  displayNext: string[] = ['name', 'date_from', 'action'];
   
   current = [];
   currentDataSource;
-  displayCurrent: string[] = ['name', 'date_to'];
+  displayCurrent: string[] = ['name', 'date_to', 'action'];
   
   past = [];
   pastDataSource;
-  displayPast: string[] = ['name', 'date_to'];
+  displayPast: string[] = ['name', 'date_to', 'action'];
 
-  constructor(private allService: TournamentsAllService) { }
+  constructor(private allService: TournamentsAllService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
     this.allService.getAllTournaments().subscribe(response => {
@@ -51,11 +54,24 @@ export class TournamentsAllComponent implements OnInit {
       this.nextDataSource = new MatTableDataSource(this.next);
       this.currentDataSource = new MatTableDataSource(this.current);
       this.pastDataSource = new MatTableDataSource(this.past);
-      // console.log(this.next);
-      // console.log(this.current);
-      // console.log(this.past);
-      
     });
+  }
+
+  openDialog(one) {
+    const dialogRef = this.dialog.open(TournamentsAllDialogComponent, {
+      disableClose: true,
+      hasBackdrop: true,
+      width: '500px',
+      data: {one: one}
+    });
+
+    dialogRef.afterClosed().subscribe(() => {
+    });
+  } 
+
+  getTournament(id) {
+    console.log(id);
+    this.router.navigate(['/tournament', id]);
   }
 
 }

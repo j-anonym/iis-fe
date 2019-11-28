@@ -17,15 +17,15 @@
                 
                 <mat-form-field class="example-full-width">
                     <mat-label>Choose a starting date</mat-label>
-                    <input matInput [matDatepicker]="pickerFrom" formControlName="date_from">
+                    <input matInput [matDatepicker]="pickerFrom" [min]="currentDate" formControlName="date_from" (dateChange)="changeDateToMin()">
                     <mat-datepicker-toggle matSuffix [for]="pickerFrom"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerFrom></mat-datepicker>
+                    <mat-datepicker #pickerFrom ></mat-datepicker>
                     <span matSuffix>*</span>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
                     <mat-label>Choose an ending date</mat-label>
-                    <input matInput [matDatepicker]="pickerTo" formControlName="date_to">
+                    <input matInput [matDatepicker]="pickerTo" [min]="minDateTo" formControlName="date_to">
                     <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
                     <mat-datepicker #pickerTo></mat-datepicker>
                     <span matSuffix>*</span>

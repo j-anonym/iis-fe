@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule, MatInputModule,
-         MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTableModule, MatTabsModule } from '@angular/material';
+         MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTableModule, MatTabsModule, MatPaginatorModule, MatExpansionModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -21,6 +21,8 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.component';
 import { TournamentsManageDialogComponent } from './tournaments-manage-dialog/tournaments-manage-dialog.component';
 import { TournamentsOneComponent } from './tournaments-one/tournaments-one.component';
+import { TournamentsAllDialogComponent } from './tournaments-all-dialog/tournaments-all-dialog.component';
+import { TournamentsOneDialogComponent } from './tournaments-one-dialog/tournaments-one-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +37,9 @@ import { TournamentsOneComponent } from './tournaments-one/tournaments-one.compo
     AdminPageDialogComponent,
     TournamentsCreateDialogComponent,
     TournamentsManageDialogComponent,
-    TournamentsOneComponent
+    TournamentsOneComponent,
+    TournamentsAllDialogComponent,
+    TournamentsOneDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -57,12 +61,16 @@ import { TournamentsOneComponent } from './tournaments-one/tournaments-one.compo
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    MatPaginatorModule,
+    MatExpansionModule
   ],
   entryComponents: [
     AdminPageDialogComponent,
     TournamentsCreateDialogComponent,
-    TournamentsManageDialogComponent
+    TournamentsManageDialogComponent,
+    TournamentsAllDialogComponent,
+    TournamentsOneDialogComponent
   ],
   providers: [
     MatDatepickerModule,
