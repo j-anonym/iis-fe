@@ -11,6 +11,7 @@ import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { RegisterComponent } from './register/register.component';
 import { TournamentsAllComponent } from './tournaments-all/tournaments-all.component';
 import { TournamentsCreateComponent } from './tournaments-create/tournaments-create.component';
 import { TournamentsManageComponent } from './tournaments-manage/tournaments-manage.component';
@@ -21,6 +22,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.component';
 import { TournamentsManageDialogComponent } from './tournaments-manage-dialog/tournaments-manage-dialog.component';
 import { TournamentsOneComponent } from './tournaments-one/tournaments-one.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +30,8 @@ import { TournamentsOneComponent } from './tournaments-one/tournaments-one.compo
     TestComponent,
     DashboardComponent,
     LoginComponent,
+    RegisterComponent,
+    LogoutComponent,
     TournamentsAllComponent,
     TournamentsCreateComponent,
     TournamentsManageComponent,
