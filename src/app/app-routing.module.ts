@@ -6,6 +6,7 @@ import { TournamentsAllComponent } from './tournaments-all/tournaments-all.compo
 import { TournamentsCreateComponent } from './tournaments-create/tournaments-create.component';
 import { TournamentsManageComponent } from './tournaments-manage/tournaments-manage.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
+import { TournamentsOneComponent } from './tournaments-one/tournaments-one.component';
 
 const routes: Routes = [
   {path: 'test', component: TestComponent},
@@ -14,6 +15,7 @@ const routes: Routes = [
   {path: 'tournaments/create', component: TournamentsCreateComponent},
   {path: 'tournaments/manage', component: TournamentsManageComponent},
   {path: 'admin', component: AdminPageComponent},
+  {path: 'tournament/:id', component: TournamentsOneComponent}
 ];
 
 @NgModule({

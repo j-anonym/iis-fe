@@ -15,8 +15,4 @@ export class TournamentsCreateService {
   getLastCreatedTournament(id_staff) {
     return this.http.get("http://localhost:8080/api/tournament/getlast/" + id_staff);
   }
-
-  // getTournament(id_tournament) {
-  //   return this.http.get("http://localhost:8080/api/tournament/get/" + id_tournament);
-  // }
 }

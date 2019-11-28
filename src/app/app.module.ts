@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule, MatInputModule,
-         MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS } from '@angular/material';
+         MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTableModule, MatTabsModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -19,6 +19,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { TournamentsCreateDialogComponent } from './tournaments-create-dialog/tournaments-create-dialog.component';
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.component';
+import { TournamentsManageDialogComponent } from './tournaments-manage-dialog/tournaments-manage-dialog.component';
+import { TournamentsOneComponent } from './tournaments-one/tournaments-one.component';
 
 @NgModule({
   declarations: [
@@ -31,7 +33,9 @@ import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.
     TournamentsManageComponent,
     AdminPageComponent,
     AdminPageDialogComponent,
-    TournamentsCreateDialogComponent
+    TournamentsCreateDialogComponent,
+    TournamentsManageDialogComponent,
+    TournamentsOneComponent
   ],
   imports: [
     BrowserModule,
@@ -51,11 +55,14 @@ import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.
     MatSelectModule,
     MDBBootstrapModule.forRoot(),
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    MatTableModule,
+    MatTabsModule
   ],
   entryComponents: [
     AdminPageDialogComponent,
-    TournamentsCreateDialogComponent
+    TournamentsCreateDialogComponent,
+    TournamentsManageDialogComponent
   ],
   providers: [
     MatDatepickerModule,
