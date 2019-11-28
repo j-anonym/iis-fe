@@ -21,6 +21,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.component';
 import { TournamentsManageDialogComponent } from './tournaments-manage-dialog/tournaments-manage-dialog.component';
 import { TournamentsOneComponent } from './tournaments-one/tournaments-one.component';
+import { LogoutComponent } from './logout/logout.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { TournamentsOneComponent } from './tournaments-one/tournaments-one.compo
     TestComponent,
     DashboardComponent,
     LoginComponent,
+    LogoutComponent,
     TournamentsAllComponent,
     TournamentsCreateComponent,
     TournamentsManageComponent,
