@@ -2,20 +2,20 @@
     <h1>Tournament: {{data.one.name}}</h1>
 </div>
 <div mat-dialog-actions>
-    <div *ngIf="true">
+    <div *ngIf="chooseDialog == 0">
         <p>Do you want to join?</p>
-        <button *ngIf="data.one._singles" mat-raised-button (click)="close()">Join as Player</button>
-        <button *ngIf="!data.one._singles" mat-raised-button (click)="close()">Join with Team</button>
-        <button class="ml-2" mat-raised-button (click)="close()">Join as Referee</button>
+        <button *ngIf="data.one._singles" mat-raised-button (click)="joinPlayer(data.one.id_tournament, 1)">Join as Player</button>
+        <button *ngIf="!data.one._singles" mat-raised-button (click)="joinTeam(data.one.id_tournament, 1)">Join with Team</button>
+        <button class="ml-2" mat-raised-button (click)="joinReferee(data.one.id_tournament, 1)">Join as Referee</button>
         <span class="filler"></span>
         <button mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
     </div>
-    <div *ngIf="false">
+    <div *ngIf="chooseDialog == 2">
         <p>Already Joined...</p>
         <span class="filler"></span>
         <button mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
     </div>
-    <div *ngIf="false">
+    <div *ngIf="chooseDialog == 1">
         <p>Waiting for response...</p>
         <span class="filler"></span>
         <button mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>

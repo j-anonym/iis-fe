@@ -59,8 +59,15 @@ export class TournamentsCreateComponent implements OnInit {
       data: {}
     });
 
+    let id_created;
+
     dialogRef.afterClosed().subscribe(() => {
-      let id_created = this.createService.getLastCreatedTournament(1);
+      this.createService.getLastCreatedTournament(1).subscribe(result => {
+        id_created = result;
+        console.log(id_created);
+        this.router.navigate(['tournament', id_created]);
+      });
+      
     });
   }
 
