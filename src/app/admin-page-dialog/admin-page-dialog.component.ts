@@ -1,5 +1,9 @@
 import { Component, OnInit, Inject } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { HttpClient } from '@angular/common/http';
+import { AdminPageService } from '../admin-page/admin-page.service';
+import { AdminPageComponent } from '../admin-page/admin-page.component';
+
 
 @Component({
   selector: 'app-admin-page-dialog',
@@ -8,7 +12,8 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dial
 })
 export class AdminPageDialogComponent implements OnInit {
 
-  constructor(public dialogRef: MatDialogRef<AdminPageDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: DialogData) { }
+  constructor(public dialogRef: MatDialogRef<AdminPageDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any,
+              private adminService: AdminPageService) { }
 
   ngOnInit() {
   }
@@ -17,8 +22,10 @@ export class AdminPageDialogComponent implements OnInit {
     this.dialogRef.close();
   }
 
+  onYesClick(): void {
+    this.adminService.deleteUser(this.data.user.id_user);
+    this.dialogRef.close();
+  }
+
 }
 
-export interface DialogData {
-  name: string;
-}

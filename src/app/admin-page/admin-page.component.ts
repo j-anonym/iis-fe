@@ -15,7 +15,7 @@ export class AdminPageComponent implements OnInit {
   users;
 
 
-  constructor(private adminService: AdminPageService, public dialog: MatDialog) { }
+  constructor(private adminService: AdminPageService, public dialog: MatDialog) {}
 
   ngOnInit() {
     this.adminService.loadUsers().subscribe(data => {
@@ -28,8 +28,13 @@ export class AdminPageComponent implements OnInit {
       width: '500px',
       hasBackdrop: true,
       disableClose: true,
-      data: {name: user.name}
-    });
+      data: {user: user} // TODO spravit si classu posielat tam iba objekt
+    }
+    );
+    dialogRef.afterClosed().subscribe(() => {
+      this.ngOnInit();
+    })
+
   }
 
 }

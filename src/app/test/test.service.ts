@@ -6,9 +6,9 @@ import { HttpClient } from '@angular/common/http';
 })
 export class TestService {
 
-  constructor(private http : HttpClient) { }
+  constructor(private http: HttpClient) { }
 
   getAllUsers() {
-    return this.http.get("http://localhost:8080/api/person/all");
+    return this.http.get('http://localhost:8080/api/person/all');
   }
 }
