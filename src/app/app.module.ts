@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule, MatInputModule,
-         MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTableModule } from '@angular/material';
+         MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTableModule, MatTabsModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
 import { HttpClientModule } from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
@@ -20,6 +20,7 @@ import { TournamentsCreateDialogComponent } from './tournaments-create-dialog/to
 import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.component';
 import { TournamentsManageDialogComponent } from './tournaments-manage-dialog/tournaments-manage-dialog.component';
+import { TournamentsOneComponent } from './tournaments-one/tournaments-one.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { TournamentsManageDialogComponent } from './tournaments-manage-dialog/to
     AdminPageComponent,
     AdminPageDialogComponent,
     TournamentsCreateDialogComponent,
-    TournamentsManageDialogComponent
+    TournamentsManageDialogComponent,
+    TournamentsOneComponent
   ],
   imports: [
     BrowserModule,
@@ -54,7 +56,8 @@ import { TournamentsManageDialogComponent } from './tournaments-manage-dialog/to
     MDBBootstrapModule.forRoot(),
     FormsModule,
     ReactiveFormsModule,
-    MatTableModule
+    MatTableModule,
+    MatTabsModule
   ],
   entryComponents: [
     AdminPageDialogComponent,

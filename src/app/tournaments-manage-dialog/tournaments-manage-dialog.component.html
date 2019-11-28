@@ -1,6 +1,14 @@
-<h1 mat-dialog-title>Bla Bla</h1>
 <div mat-dialog-content>
-    <p>Lorem Ipsum</p>
+    <mat-tab-group>
+        <mat-tab label="Knockout">
+            <h1>Some tab content</h1>
+            <p>...</p>
+        </mat-tab>
+        <mat-tab label="Manage">
+            <h1>Some more tab content</h1>
+            <p>...</p>
+        </mat-tab>
+    </mat-tab-group>
 </div>
 <div mat-dialog-actions>
     <button mat-raised-button color="primary" (click)="close()">Close</button>
