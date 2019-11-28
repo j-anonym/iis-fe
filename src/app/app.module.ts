@@ -21,6 +21,7 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.component';
 import { TournamentsManageDialogComponent } from './tournaments-manage-dialog/tournaments-manage-dialog.component';
 import { TournamentsOneComponent } from './tournaments-one/tournaments-one.component';
+import { AdminPageEditDialogComponent } from './admin-page-edit-dialog/admin-page-edit-dialog.component';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,8 @@ import { TournamentsOneComponent } from './tournaments-one/tournaments-one.compo
     AdminPageDialogComponent,
     TournamentsCreateDialogComponent,
     TournamentsManageDialogComponent,
-    TournamentsOneComponent
+    TournamentsOneComponent,
+    AdminPageEditDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -61,6 +63,7 @@ import { TournamentsOneComponent } from './tournaments-one/tournaments-one.compo
   ],
   entryComponents: [
     AdminPageDialogComponent,
+    AdminPageEditDialogComponent,
     TournamentsCreateDialogComponent,
     TournamentsManageDialogComponent
   ],
