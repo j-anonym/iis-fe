@@ -8,9 +8,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule, MatInputModule,
          MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTableModule, MatTabsModule, MatPaginatorModule, MatExpansionModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
-import { HttpClientModule } from '@angular/common/http';
+import { Globals } from './globals';
+import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { LoginComponent } from './login/login.component';
+import { SuccessComponent} from "./success/success.component";
+import { RegisterComponent } from './register/register.component';
 import { TournamentsAllComponent } from './tournaments-all/tournaments-all.component';
 import { TournamentsCreateComponent } from './tournaments-create/tournaments-create.component';
 import { TournamentsManageComponent } from './tournaments-manage/tournaments-manage.component';
@@ -21,6 +24,9 @@ import { AdminPageComponent } from './admin-page/admin-page.component';
 import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.component';
 import { TournamentsManageDialogComponent } from './tournaments-manage-dialog/tournaments-manage-dialog.component';
 import { TournamentsOneComponent } from './tournaments-one/tournaments-one.component';
+import { LogoutComponent } from './logout/logout.component';
+import {BasicAuthHtppInterceptorService} from "./login/auth-http.service";
+import {ErrorInterceptor} from "./logout/error.intercept";
 import { AdminPageEditDialogComponent } from './admin-page-edit-dialog/admin-page-edit-dialog.component';
 import { TournamentsAllDialogComponent } from './tournaments-all-dialog/tournaments-all-dialog.component';
 import { TournamentsOneDialogComponent } from './tournaments-one-dialog/tournaments-one-dialog.component';
@@ -34,6 +40,8 @@ import { TeamsManageComponent } from './teams-manage/teams-manage.component';
     TestComponent,
     DashboardComponent,
     LoginComponent,
+    RegisterComponent,
+    LogoutComponent,
     TournamentsAllComponent,
     TournamentsCreateComponent,
     TournamentsManageComponent,
@@ -42,6 +50,7 @@ import { TeamsManageComponent } from './teams-manage/teams-manage.component';
     TournamentsCreateDialogComponent,
     TournamentsManageDialogComponent,
     TournamentsOneComponent,
+    SuccessComponent
     AdminPageEditDialogComponent,
     TournamentsAllDialogComponent,
     TournamentsOneDialogComponent,
@@ -82,6 +91,9 @@ import { TeamsManageComponent } from './teams-manage/teams-manage.component';
     TournamentsOneDialogComponent
   ],
   providers: [
+      Globals,
+    { provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true},
+    { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     MatDatepickerModule,
     {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
   ],
