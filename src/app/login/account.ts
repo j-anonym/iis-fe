@@ -5,5 +5,5 @@ export class Account {
     name: string;
     surname: string;
     nationality: string;
-    token?: string;
+    token: string;
 }

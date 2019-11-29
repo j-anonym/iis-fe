@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit , HostBinding} from '@angular/core';
 import { Router , ActivatedRoute} from '@angular/router';
 import { AuthenticationService } from './authentication.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
+import { Globals } from '../globals'
 
 @Component({
   selector: 'app-login',
@@ -16,9 +17,11 @@ export class LoginComponent implements OnInit {
     error = '';
 
   constructor(private router: Router,
+              public globals: Globals,
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
-              private loginservice: AuthenticationService) { if (this.loginservice.currentVal) this.router.navigate(['/success']);}
+              private loginservice: AuthenticationService) {
+      if (this.loginservice.currentVal) this.router.navigate(['/success']);}
 
   ngOnInit() {
       this.loginForm = this.formBuilder.group({
@@ -41,6 +44,8 @@ export class LoginComponent implements OnInit {
       this.loginservice.authenticate(this.f.username.value, this.f.password.value).pipe(first()).subscribe(
           data => {
               this.router.navigate(['/success']);
+              //this.globals.id = 'logged';
+
           },
           error => {
               this.error = error;
