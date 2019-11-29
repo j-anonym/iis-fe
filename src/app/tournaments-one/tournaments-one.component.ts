@@ -57,7 +57,6 @@ export class TournamentsOneComponent implements OnInit {
   }
 
   openDialog() {
-    console.log(this.data);
     const dialogRef = this.dialog.open(TournamentsOneDialogComponent, {
       disableClose: true,
       hasBackdrop: true,
@@ -70,25 +69,19 @@ export class TournamentsOneComponent implements OnInit {
   }
 
   accept(who) {
-    console.log(who);
     if('id_player' in who) {
-      console.log('hentu')
-      this.oneService.acceptPlayer(who.id_tournament, who.id_player).subscribe(response => {console.log(response)});
+      this.oneService.acceptPlayer(who.id_tournament, who.id_player).subscribe(() => {this.ngOnInit();});
     } else {
-      this.oneService.acceptTeam(who.id_tournament, who.id_player).subscribe(response => {console.log(response)});
+      this.oneService.acceptTeam(who.id_tournament, who.id_player).subscribe(() => {this.ngOnInit();});
     }
-    this.ngOnInit();
   }
 
   decline(who) {
-    console.log(who);
     if('id_player' in who) {
-      console.log('hentu')
-      this.oneService.declinePlayer(who.id_tournament, who.id_player).subscribe(response => {console.log(response)});
+      this.oneService.declinePlayer(who.id_tournament, who.id_player).subscribe(() => {this.ngOnInit();});
     } else {
-      this.oneService.declinePlayer(who.id_tournament, who.id_player).subscribe(response => {console.log(response)});
+      this.oneService.declinePlayer(who.id_tournament, who.id_player).subscribe(() => {this.ngOnInit();});
     }
-    this.ngOnInit();
   }
 
 }
