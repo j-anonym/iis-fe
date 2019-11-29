@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
               private formBuilder: FormBuilder,
               private route: ActivatedRoute,
               private loginservice: AuthenticationService) {
-      if (this.loginservice.currentVal) this.router.navigate(['/success']);}
+      if (this.loginservice.currentVal) {this.router.navigate(['/success']); this.globals.logged = true;}}
 
   ngOnInit() {
       this.loginForm = this.formBuilder.group({
