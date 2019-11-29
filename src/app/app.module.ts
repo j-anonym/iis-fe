@@ -50,7 +50,7 @@ import { TeamsManageComponent } from './teams-manage/teams-manage.component';
     TournamentsCreateDialogComponent,
     TournamentsManageDialogComponent,
     TournamentsOneComponent,
-    SuccessComponent
+    SuccessComponent,
     AdminPageEditDialogComponent,
     TournamentsAllDialogComponent,
     TournamentsOneDialogComponent,

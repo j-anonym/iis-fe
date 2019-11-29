@@ -20,9 +20,9 @@ export class AppComponent implements OnInit {
   logged = false;
 
   constructor(
-      public globals: Globals,
+      private globals: Globals,
       private router: Router,
-      private authService:AuthenticationService
+      private authService:AuthenticationService,
   ) {
     this.authService.current.subscribe(x => this.current = x);
   }
@@ -40,12 +40,11 @@ export class AppComponent implements OnInit {
 
   login() {
     this.router.navigate(['/login']);
-    this.logged = true;
   }
 
   logout() {
     this.authService.logOut();
     this.router.navigate(['/login']);
-    this.logged = false;
+    this.globals.logged = false;
   }
 }

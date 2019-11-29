@@ -4,4 +4,5 @@ import { Injectable } from '@angular/core';
 export class Globals {
     role: string = 'test';
     id: string = 'name';
+    logged: boolean;
 }

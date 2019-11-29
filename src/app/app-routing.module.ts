@@ -28,7 +28,7 @@ const routes: Routes = [
   {path: 'login', component: LoginComponent },
   {path: 'logout', component: LogoutComponent,canActivate:[AuthGaurdService]},
   {path: 'register', component: RegisterComponent },
-  {path: 'success', component: SuccessComponent}
+  {path: 'success', component: SuccessComponent},
   {path: 'teams/all', component: TeamsAllComponent},
   {path: 'teams/create', component: TeamsCreateComponent},
   {path: 'teams/involved', component: TeamsManageComponent}
