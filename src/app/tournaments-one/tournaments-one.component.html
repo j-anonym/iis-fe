@@ -1,1 +1,71 @@
-<p>tournaments-one works!</p>
+<div class="card-body">
+    <mat-card>
+        <img style="cursor:pointer; float: right;" height="30" width="30" (click)="openDialog()" src="../../assets/icons/outline_clear_black_36dp.png" />
+        <mat-card-header>
+            <div mat-card-avatar class="one"></div>
+            <mat-card-title>Tournament: {{data ? data.name : ""}}</mat-card-title>
+            <mat-card-subtitle>Detailed view</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-tab-group>
+                <mat-tab label="Information">
+                    <div class="row">
+                        <div class="col-sm">
+                            <mat-list *ngIf="data">
+                                <mat-list-item><b>Gender: </b>{{data ? data.type : ""}}</mat-list-item>
+                                <mat-list-item><b>Type: </b>{{data._singles ? "Singles" : "Doubles"}}</mat-list-item>
+                                <mat-list-item><b>Occupation: </b>{{data ? data.occupation : ""}}/{{data ? data.capacity : ""}}</mat-list-item>
+                                <mat-list-item><b>Place: </b>{{data ? data.place : ""}}</mat-list-item>
+                                <mat-list-item><b>Date From: </b>{{data ? data.date_from : ""}}</mat-list-item>
+                                <mat-list-item><b>Date To: </b>{{data ? data.date_to : ""}}</mat-list-item>
+                                <mat-list-item><b>Prize: </b>{{data ? data.prize : ""}} €</mat-list-item>
+                                <mat-list-item><b>Register cost: </b>{{data ? data.cost : ""}} €</mat-list-item>
+                                <mat-list-item><b>Sponsors: </b>{{data ? data.sponsors : ""}}</mat-list-item>
+                            </mat-list>
+                        </div>
+                        <div class="col-sm">
+                            <mat-list *ngIf="data">
+                                <mat-list-item><b>{{data._singles ? "Players:" : "Teams:"}}</b></mat-list-item>
+                                <mat-list-item *ngFor="let one of accepted">{{one.id_player}}</mat-list-item>
+                            </mat-list>
+                        </div>
+                    </div>
+                    
+                </mat-tab>
+                <mat-tab label="Knockout">
+                    <h1>Some tab content</h1>
+                    <p>...</p>
+                </mat-tab>
+                <mat-tab label="Requests" *ngIf="true">
+                    <div class="row">
+                        <div class="col-sm">
+                            <mat-list *ngIf="data">
+                                <mat-list-item><b>Attendants:</b></mat-list-item>
+                                <mat-list-item *ngFor="let player of pendingPlayers">
+                                    <span class="mr-2">player1</span>
+                                    <button class="mr-2" mat-raised-button color="primary" (click)="accept(player)">Accept</button>
+                                    <button mat-raised-button color="warn" (click)="decline(player)">Decline</button>
+                                </mat-list-item>
+                                <mat-list-item *ngFor="let team of pendingTeams">
+                                    <span class="mr-2">team1</span>
+                                    <button class="mr-2" mat-raised-button color="primary" (click)="accept(team)">Accept</button>
+                                    <button mat-raised-button color="warn" (click)="decline(team)">Decline</button>
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
+                        <div class="col-sm">
+                            <mat-list *ngIf="data">
+                                <mat-list-item><b>Referees:</b></mat-list-item>
+                                <mat-list-item *ngFor="let referee of pendingReferees">
+                                    <span class="mr-2">referee1</span>
+                                    <button class="mr-2" mat-raised-button color="primary" (click)="accept(referee)">Accept</button>
+                                    <button mat-raised-button color="warn" (click)="decline(referee)">Decline</button>
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
+                    </div>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+</div>
