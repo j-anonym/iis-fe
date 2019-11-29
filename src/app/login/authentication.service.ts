@@ -1,32 +1,35 @@
 import { Injectable } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
+import { BehaviorSubject, Observable } from 'rxjs';
+
 import { map } from 'rxjs/operators';
+import { Account } from './account';
 
- export class Account{
-    constructor(
-        public status:string,
-    ) {}
-
-}
 
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthenticationService {
+    private currentSub: BehaviorSubject<Account>;
+    public current: Observable<Account>;
 
     constructor(
-        private httpClient:HttpClient
-    ) {
+        private http:HttpClient
+    ) { this.currentSub = new BehaviorSubject<Account>(JSON.parse(localStorage.getItem('current')));
+        this.current = this.currentSub.asObservable();
+    }
+
+    public get currentVal() : Account {
+        return this.currentSub.value;
     }
 
     authenticate(username, password) {
-        return this.httpClient.post<any>('http://localhost:8080/authenticate',{username,password}).pipe(
+        return this.http.post<any>('http://localhost:8087/authenticate',{username,password}).pipe(
             map(
                 userData => {
-                    sessionStorage.setItem('username',username);
-                    let tokenStr= 'Bearer '+userData.token;
-                    sessionStorage.setItem('token', tokenStr);
+                    localStorage.setItem('current', JSON.stringify(userData));
+                    this.currentSub.next(userData);
                     return userData;
                 }
             )
@@ -35,10 +38,10 @@ export class AuthenticationService {
     }
 
     register(username, password, name, surname, nationality) {
-        return this.httpClient.post<any>('http://localhost:8080/register',{username,password, name, surname, nationality}).pipe(
+        return this.http.post<any>('http://localhost:8087/register',{username,password, name, surname, nationality}).pipe(
             map(
                 userData => {
-                    sessionStorage.setItem('username',username);
+                    localStorage.setItem('current', JSON.stringify(userData));
                     return userData;
                 }
             )
@@ -47,14 +50,8 @@ export class AuthenticationService {
     }
 
 
-
-    isUserLoggedIn() {
-        let account = sessionStorage.getItem('username')
-        console.log(!(account === null))
-        return !(account === null)
-    }
-
     logOut() {
-        sessionStorage.removeItem('username')
+        localStorage.removeItem('current');
+        this.currentSub.next(null);
     }
 }
