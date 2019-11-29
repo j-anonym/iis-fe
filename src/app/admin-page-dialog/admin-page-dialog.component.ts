@@ -1,8 +1,6 @@
 import { Component, OnInit, Inject } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
-import { HttpClient } from '@angular/common/http';
+import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
 import { AdminPageService } from '../admin-page/admin-page.service';
-import { AdminPageComponent } from '../admin-page/admin-page.component';
 
 
 @Component({

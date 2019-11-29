@@ -17,6 +17,7 @@ export class TestComponent implements OnInit {
     this.foo();
     this.ts.getAllUsers().subscribe(data => {
       console.log(data);
+      this.data = data;
     });
     console.log(this.data);
   }

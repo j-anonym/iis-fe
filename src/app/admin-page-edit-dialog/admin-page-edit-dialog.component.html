@@ -1,0 +1,79 @@
+<div class="card-body">
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar class="create"></div>
+            <mat-card-title>Edit User</mat-card-title>
+            <mat-card-subtitle>* Indicates required field</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form class="create-form" [formGroup]="createForm" (ngSubmit)="submit(createForm.value)" autocomplete="off">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name">
+                    <mat-error *ngIf="hasError('name', 'required')"></mat-error>
+                    <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 128 characters</mat-error>
+                    <span matSuffix>*</span>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Surname</mat-label>
+                    <input matInput formControlName="surname">
+                    <mat-error *ngIf="hasError('surname', 'required')"></mat-error>
+                    <mat-error *ngIf="hasError('surname', 'maxlength')">You have more than 128 characters</mat-error>
+                    <span matSuffix>*</span>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Choose birth date</mat-label>
+                    <input matInput [max]="currentDate" [matDatepicker]="pickerTo" formControlName="birth" >
+                    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                    <mat-datepicker [startAt]="date" #pickerTo></mat-datepicker>
+                    <span matSuffix>*</span>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Nationality in Alpha-2 code</mat-label>
+                    <input matInput formControlName="nationality">
+                    <mat-error *ngIf="hasError('nationality', 'required')"></mat-error>
+                    <mat-error *ngIf="hasError('nationality', 'maxlength')">You have more than 2 characters</mat-error> <!-- TODO trigger na uppercase pri vkladani-->
+                    <mat-error *ngIf="hasError('nationality', 'minlength')">You have less than 2 characters</mat-error>
+                    <span matSuffix>*</span>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Is admin (dangerous)</mat-label>
+                    <mat-select [(value)]="is_admin" formControlName="is_admin">
+                        <mat-option [value]="true">True</mat-option>
+                        <mat-option [value]="false">False</mat-option>
+                    </mat-select>
+                    <span matSuffix>*</span>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Sex</mat-label>
+                    <mat-select [(value)]="sex" formControlName="sex">
+                        <mat-option value="M">Man</mat-option>
+                        <mat-option value="W">Woman</mat-option>
+                        <mat-option value="MW">Undefined</mat-option>
+                    </mat-select>
+                    <span matSuffix>*</span>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width">
+                    <mat-label>Primary hand:</mat-label>
+                    <mat-select [(value)]="is_left_handed" formControlName="is_left_handed">
+                        <mat-option [value]="true">Left</mat-option>
+                        <mat-option [value]="false">Right</mat-option>
+                    </mat-select>
+                    <span matSuffix>*</span>
+                </mat-form-field>
+
+                <mat-card-actions >
+                    <button mat-raised-button style="float: right;" type="reset" color="secondary" (click)="onCloseClick()">Close</button>
+                    <button mat-raised-button type="submit" color="primary" [disabled]="!createForm.valid">Submit</button>
+                </mat-card-actions>
+            </form>
+        </mat-card-content>
+    </mat-card>
+</div>
+

@@ -15,12 +15,14 @@ import { Router } from '@angular/router';
 export class TournamentsCreateComponent implements OnInit {
 
   public createForm: FormGroup;
-  singles = true;
-  gender = '---';
+  currentDate;
+  minDateTo;
 
   constructor(private createService : TournamentsCreateService, public dialog: MatDialog, private router: Router) { }
 
   ngOnInit() {
+    this.currentDate = moment().toDate();
+
     this.createForm = new FormGroup({
       name: new FormControl(null, [Validators.required, Validators.maxLength(128)]),
       date_from: new FormControl(null, [Validators.required]),
@@ -39,10 +41,12 @@ export class TournamentsCreateComponent implements OnInit {
     return this.createForm.controls[controlName].hasError(errorName);
   }
 
-  submit(data) {
-    console.log(data.date_from);
-    console.log(moment(data.date_from).format('DD/MM/YYYY'));
+  changeDateToMin() {
+    this.minDateTo = moment(this.createForm.value.date_from, "MM/DD/YYYY");
+    this.minDateTo = moment(this.minDateTo).toDate();
+  }
 
+  submit(data) {
     this.createService.createTournament(data).subscribe();
     this.openDialog();
   }
@@ -55,10 +59,15 @@ export class TournamentsCreateComponent implements OnInit {
       data: {}
     });
 
+    let id_created;
+
     dialogRef.afterClosed().subscribe(() => {
-      let id_created = this.createService.getLastCreatedTournament(1);
-      // this.router.navigate(['/tournament/'+id_created]);
+      this.createService.getLastCreatedTournament(1).subscribe(result => {
+        id_created = result;
+        console.log(id_created);
+        this.router.navigate(['tournament', id_created]);
+      });
+      
     });
   }
-
 }

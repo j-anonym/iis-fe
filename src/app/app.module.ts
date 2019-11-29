@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule, MatInputModule,
-         MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTableModule, MatTabsModule } from '@angular/material';
+         MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTableModule, MatTabsModule, MatPaginatorModule, MatExpansionModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
 import { Globals } from './globals';
 import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -27,6 +27,12 @@ import { TournamentsOneComponent } from './tournaments-one/tournaments-one.compo
 import { LogoutComponent } from './logout/logout.component';
 import {BasicAuthHtppInterceptorService} from "./login/auth-http.service";
 import {ErrorInterceptor} from "./logout/error.intercept";
+import { AdminPageEditDialogComponent } from './admin-page-edit-dialog/admin-page-edit-dialog.component';
+import { TournamentsAllDialogComponent } from './tournaments-all-dialog/tournaments-all-dialog.component';
+import { TournamentsOneDialogComponent } from './tournaments-one-dialog/tournaments-one-dialog.component';
+import { TeamsAllComponent } from './teams-all/teams-all.component';
+import { TeamsCreateComponent } from './teams-create/teams-create.component';
+import { TeamsManageComponent } from './teams-manage/teams-manage.component';
 
 @NgModule({
   declarations: [
@@ -45,6 +51,12 @@ import {ErrorInterceptor} from "./logout/error.intercept";
     TournamentsManageDialogComponent,
     TournamentsOneComponent,
     SuccessComponent
+    AdminPageEditDialogComponent,
+    TournamentsAllDialogComponent,
+    TournamentsOneDialogComponent,
+    TeamsAllComponent,
+    TeamsCreateComponent,
+    TeamsManageComponent
   ],
   imports: [
     BrowserModule,
@@ -66,19 +78,24 @@ import {ErrorInterceptor} from "./logout/error.intercept";
     FormsModule,
     ReactiveFormsModule,
     MatTableModule,
-    MatTabsModule
+    MatTabsModule,
+    MatPaginatorModule,
+    MatExpansionModule
   ],
   entryComponents: [
     AdminPageDialogComponent,
+    AdminPageEditDialogComponent,
     TournamentsCreateDialogComponent,
-    TournamentsManageDialogComponent
+    TournamentsManageDialogComponent,
+    TournamentsAllDialogComponent,
+    TournamentsOneDialogComponent
   ],
   providers: [
       Globals,
     { provide: HTTP_INTERCEPTORS, useClass: BasicAuthHtppInterceptorService, multi: true},
     { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true},
     MatDatepickerModule,
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
   ],
   bootstrap: [AppComponent]
 })
