@@ -25,9 +25,9 @@
 
                 <mat-form-field class="example-full-width">
                     <mat-label>Choose birth date</mat-label>
-                    <input matInput [matDatepicker]="pickerTo" formControlName="birth_date">
+                    <input matInput [max]="currentDate" [matDatepicker]="pickerTo" formControlName="birth" >
                     <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
-                    <mat-datepicker #pickerTo></mat-datepicker>
+                    <mat-datepicker [startAt]="date" #pickerTo></mat-datepicker>
                     <span matSuffix>*</span>
                 </mat-form-field>
 
@@ -43,8 +43,8 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Is admin (dangerous)</mat-label>
                     <mat-select [(value)]="is_admin" formControlName="is_admin">
-                        <mat-option value="true">True</mat-option>
-                        <mat-option value="false">False</mat-option>
+                        <mat-option [value]="true">True</mat-option>
+                        <mat-option [value]="false">False</mat-option>
                     </mat-select>
                     <span matSuffix>*</span>
                 </mat-form-field>
@@ -62,14 +62,14 @@
                 <mat-form-field class="example-full-width">
                     <mat-label>Primary hand:</mat-label>
                     <mat-select [(value)]="is_left_handed" formControlName="is_left_handed">
-                        <mat-option value="true">Left</mat-option>
-                        <mat-option value="false">Right</mat-option>
+                        <mat-option [value]="true">Left</mat-option>
+                        <mat-option [value]="false">Right</mat-option>
                     </mat-select>
                     <span matSuffix>*</span>
                 </mat-form-field>
 
-                <mat-card-actions class="ml-1">
-                    <button mat-raised-button type="reset" color="secondary" (click)="onCloseClick()">Close</button>
+                <mat-card-actions >
+                    <button mat-raised-button style="float: right;" type="reset" color="secondary" (click)="onCloseClick()">Close</button>
                     <button mat-raised-button type="submit" color="primary" [disabled]="!createForm.valid">Submit</button>
                 </mat-card-actions>
             </form>

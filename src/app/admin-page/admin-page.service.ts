@@ -20,4 +20,10 @@ export class AdminPageService {
       console.log(response);
     });
   }
+
+  updateUser(data) {
+    this.http.post('http://localhost:8080/api/person/update', data).subscribe(response => {
+      console.log(response);
+    });
+  }
 }

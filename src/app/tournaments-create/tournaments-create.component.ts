@@ -60,5 +60,4 @@ export class TournamentsCreateComponent implements OnInit {
       // this.router.navigate(['/tournament/'+id_created]);
     });
   }
-
 }

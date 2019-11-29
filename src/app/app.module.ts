@@ -69,7 +69,7 @@ import { AdminPageEditDialogComponent } from './admin-page-edit-dialog/admin-pag
   ],
   providers: [
     MatDatepickerModule,
-    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}}
+    {provide: MAT_DIALOG_DEFAULT_OPTIONS, useValue: {hasBackdrop: false}},
   ],
   bootstrap: [AppComponent]
 })
