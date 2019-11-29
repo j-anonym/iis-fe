@@ -12,15 +12,47 @@ import { ActivatedRoute } from '@angular/router';
 export class TournamentsOneComponent implements OnInit {
 
   data;
+  id_tournament;
+
+  pendingReferees = [];
+  pendingPlayers = [];
+  pendingTeams = [];
+
+  accepted = [];
 
   constructor(private oneService: TournamentsOneService, public dialog: MatDialog, private route: ActivatedRoute) { }
 
   ngOnInit() {
+    this.id_tournament = this.route.snapshot.paramMap.get("id");
 
-
-    this.oneService.getOneTournament(this.route.snapshot.paramMap.get("id")).subscribe(response => {
+    // tournament informations
+    this.oneService.getOneTournament(this.id_tournament).subscribe(response => {
       this.data = JSON.parse(JSON.stringify(response));
-      console.log(this.data);
+      // console.log(this.data);
+
+      // pending referees
+      this.oneService.getPendingReferees(this.id_tournament).subscribe(response => {
+        this.pendingReferees = JSON.parse(JSON.stringify(response));
+        // console.log(this.pendingReferees);
+      })
+
+      // singles
+      if (this.data._singles) {
+        this.oneService.getAcceptedPlayers(this.id_tournament).subscribe(response => {
+          this.accepted = JSON.parse(JSON.stringify(response));
+        })
+        this.oneService.getPendingPlayers(this.id_tournament).subscribe(response => {
+          this.pendingPlayers = JSON.parse(JSON.stringify(response));
+        })
+      // doubles
+      } else {
+        this.oneService.getAcceptedTeams(this.id_tournament).subscribe(response => {
+          this.accepted = JSON.parse(JSON.stringify(response));
+        })
+        this.oneService.getPendingTeams(this.id_tournament).subscribe(response => {
+          this.pendingTeams = JSON.parse(JSON.stringify(response));
+        })
+      }
     }); 
   }
 
@@ -35,6 +67,28 @@ export class TournamentsOneComponent implements OnInit {
 
     dialogRef.afterClosed().subscribe(() => {
     });
+  }
+
+  accept(who) {
+    console.log(who);
+    if('id_player' in who) {
+      console.log('hentu')
+      this.oneService.acceptPlayer(who.id_tournament, who.id_player).subscribe(response => {console.log(response)});
+    } else {
+      this.oneService.acceptTeam(who.id_tournament, who.id_player).subscribe(response => {console.log(response)});
+    }
+    this.ngOnInit();
+  }
+
+  decline(who) {
+    console.log(who);
+    if('id_player' in who) {
+      console.log('hentu')
+      this.oneService.declinePlayer(who.id_tournament, who.id_player).subscribe(response => {console.log(response)});
+    } else {
+      this.oneService.declinePlayer(who.id_tournament, who.id_player).subscribe(response => {console.log(response)});
+    }
+    this.ngOnInit();
   }
 
 }

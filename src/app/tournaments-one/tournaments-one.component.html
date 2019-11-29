@@ -26,9 +26,7 @@
                         <div class="col-sm">
                             <mat-list *ngIf="data">
                                 <mat-list-item><b>{{data._singles ? "Players:" : "Teams:"}}</b></mat-list-item>
-                                <mat-list-item>Player 1</mat-list-item>
-                                <mat-list-item>Player 2</mat-list-item>
-                                <mat-list-item>Player 3</mat-list-item>
+                                <mat-list-item *ngFor="let one of accepted">{{one.id_player}}</mat-list-item>
                             </mat-list>
                         </div>
                     </div>
@@ -39,8 +37,33 @@
                     <p>...</p>
                 </mat-tab>
                 <mat-tab label="Requests" *ngIf="true">
-                    <h1>Some more tab content</h1>
-                    <p>...</p>
+                    <div class="row">
+                        <div class="col-sm">
+                            <mat-list *ngIf="data">
+                                <mat-list-item><b>Attendants:</b></mat-list-item>
+                                <mat-list-item *ngFor="let player of pendingPlayers">
+                                    <span class="mr-2">player1</span>
+                                    <button class="mr-2" mat-raised-button color="primary" (click)="accept(player)">Accept</button>
+                                    <button mat-raised-button color="warn" (click)="decline(player)">Decline</button>
+                                </mat-list-item>
+                                <mat-list-item *ngFor="let team of pendingTeams">
+                                    <span class="mr-2">team1</span>
+                                    <button class="mr-2" mat-raised-button color="primary" (click)="accept(team)">Accept</button>
+                                    <button mat-raised-button color="warn" (click)="decline(team)">Decline</button>
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
+                        <div class="col-sm">
+                            <mat-list *ngIf="data">
+                                <mat-list-item><b>Referees:</b></mat-list-item>
+                                <mat-list-item *ngFor="let referee of pendingReferees">
+                                    <span class="mr-2">referee1</span>
+                                    <button class="mr-2" mat-raised-button color="primary" (click)="accept(referee)">Accept</button>
+                                    <button mat-raised-button color="warn" (click)="decline(referee)">Decline</button>
+                                </mat-list-item>
+                            </mat-list>
+                        </div>
+                    </div>
                 </mat-tab>
             </mat-tab-group>
         </mat-card-content>
