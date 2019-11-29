@@ -38,11 +38,11 @@
       </button>
     </mat-menu>
 
-    <img *ngIf="!logged" class="pointer" src="../assets/icons/perm_identity_36dp.png" (click)="login()">
-    <img *ngIf="logged" class="pointer" src="../assets/icons/how_to_reg_36dp.png" [matMenuTriggerFor]="userMenu">
+    <img *ngIf="!globals.logged" class="pointer" src="../assets/icons/perm_identity_36dp.png" (click)="login()">
+    <img *ngIf="globals.logged" class="pointer" src="../assets/icons/how_to_reg_36dp.png" [matMenuTriggerFor]="userMenu">
 
     <mat-menu #userMenu="matMenu">
-      <button mat-menu-item disabled>Logged: user</button>
+      <button *ngIf="current" mat-menu-item disabled>Logged: user</button>
       <button mat-menu-item>Settings</button>
       <button mat-menu-item (click)="logout()">Logout</button>
     </mat-menu>
