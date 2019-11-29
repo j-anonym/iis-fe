@@ -28,7 +28,7 @@ export class AppComponent implements OnInit {
       private authService:AuthenticationService,
   ) {
     this.authService.current.subscribe(x => this.current = x);
-    this.tok = this.authService.currentVal.token;
+    //this.tok = this.authService.currentVal.token;
   }
 
   //@HostListener('check')
