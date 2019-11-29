@@ -12,28 +12,17 @@
                     <div class="row">
                         <div class="col-sm">
                             <mat-list>
-                                <mat-list-item><b>Description:</b>xxx</mat-list-item>
-                                <mat-list-item><b>Statistics:</b>odkaz</mat-list-item>
-                                <!-- <mat-list-item *ngFor="let player of players"></mat-list-item> -->
+                                <mat-list-item><b>Description:</b>{{data ? data.logo : ""}}</mat-list-item>
+                                <mat-list-item><b>Statistics:</b>link</mat-list-item>
                             </mat-list>
                         </div>
                         <div class="col-sm">
-                            <mat-list>
-                                <mat-list-item><b>Players:</b></mat-list-item>
-                                <!-- <mat-list-item *ngFor="let player of players"></mat-list-item> -->
+                            <mat-list *ngIf="data">
+                                <mat-list-item ><b>Player 1:</b>{{data.id_player_1 ? data.id_player_1 : "&lt;Free&gt;"}}</mat-list-item>
+                                <mat-list-item ><b>Player 2:</b>{{data.id_player_2 ? data.id_player_2 : "&lt;Free&gt;"}}</mat-list-item>
                             </mat-list>
                         </div>
                     </div>
-                </mat-tab>
-                <mat-tab label="Requests">
-                    <mat-list>
-                        <mat-list-item><b>Applicants:</b></mat-list-item>
-                        <!-- <mat-list-item *ngFor="let player of pendingPlayers">
-                            <span class="mr-2">player1</span>
-                            <button class="mr-2" mat-raised-button color="primary" (click)="accept(player)">Accept</button>
-                            <button mat-raised-button color="warn" (click)="decline(player)">Decline</button>
-                        </mat-list-item> -->
-                    </mat-list>
                 </mat-tab>
             </mat-tab-group>
         </mat-card-content>

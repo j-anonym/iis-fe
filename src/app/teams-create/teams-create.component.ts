@@ -45,11 +45,11 @@ export class TeamsCreateComponent implements OnInit {
     let id_created;
 
     dialogRef.afterClosed().subscribe(() => {
-      // this.createService.getLastCreatedTournament(1).subscribe(result => {
-      //   id_created = result;
-      //   console.log(id_created);
-      //   this.router.navigate(['tournament', id_created]);
-      // });
+      this.createService.getLastCreated(1).subscribe(result => {
+        id_created = result;
+        console.log(id_created);
+        this.router.navigate(['/team', id_created]);
+      });
     });
   }
 

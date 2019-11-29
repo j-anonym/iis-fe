@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { TeamsAllService } from '../teams-all/teams-all.service';
+import { MatTableDataSource } from '@angular/material';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-teams-manage',
@@ -7,9 +10,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class TeamsManageComponent implements OnInit {
 
-  constructor() { }
+  dataSource;
+  displayedColumns: string[] = ['name', 'logo'];
+
+  constructor(private allService: TeamsAllService, private router: Router) { }
 
   ngOnInit() {
+    this.allService.getAllJoined(1).subscribe(result => {
+      this.dataSource = JSON.parse(JSON.stringify(result));
+      this.dataSource = new MatTableDataSource(this.dataSource);
+    })
+  }
+
+  getTeam(row) {
+    console.log(row);
+    this.router.navigate(['/team/'+row.id_team]);
   }
 
 }

@@ -11,4 +11,8 @@ export class TeamsCreateService {
   createTeam(data) {
     return this.http.post("http://localhost:8080/api/team/create", data);
   }
+
+  getLastCreated(id_user) {
+    return this.http.get("http://localhost:8080/api/team/getlast/"+id_user);
+  }
 }

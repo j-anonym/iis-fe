@@ -34,6 +34,8 @@ import { TeamsAllComponent } from './teams-all/teams-all.component';
 import { TeamsCreateComponent } from './teams-create/teams-create.component';
 import { TeamsManageComponent } from './teams-manage/teams-manage.component';
 import { TeamsOneComponent } from './teams-one/teams-one.component';
+import { TeamsAllDialogComponent } from './teams-all-dialog/teams-all-dialog.component';
+import { TeamsOneDialogComponent } from './teams-one-dialog/teams-one-dialog.component';
 
 @NgModule({
   declarations: [
@@ -58,7 +60,9 @@ import { TeamsOneComponent } from './teams-one/teams-one.component';
     TeamsAllComponent,
     TeamsCreateComponent,
     TeamsManageComponent,
-    TeamsOneComponent
+    TeamsOneComponent,
+    TeamsAllDialogComponent,
+    TeamsOneDialogComponent
   ],
   imports: [
     BrowserModule,
@@ -90,7 +94,8 @@ import { TeamsOneComponent } from './teams-one/teams-one.component';
     TournamentsCreateDialogComponent,
     TournamentsManageDialogComponent,
     TournamentsAllDialogComponent,
-    TournamentsOneDialogComponent
+    TournamentsOneDialogComponent,
+    TeamsAllDialogComponent
   ],
   providers: [
       Globals,

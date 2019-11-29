@@ -23,7 +23,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
   {path: 'tournaments/all', component: TournamentsAllComponent},
   {path: 'tournaments/create', component: TournamentsCreateComponent},
-  {path: 'tournaments/manage', component: TournamentsManageComponent},
+  {path: 'tournaments/involved', component: TournamentsManageComponent},
   {path: 'admin', component: AdminPageComponent},
   {path: 'tournament/:id', component: TournamentsOneComponent},
   {path: 'login', component: LoginComponent },
