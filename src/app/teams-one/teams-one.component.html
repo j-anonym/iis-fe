@@ -1,0 +1,41 @@
+<div class="card-body">
+    <mat-card>
+        <img style="cursor:pointer; float: right;" height="30" width="30" (click)="openDialog()" src="../../assets/icons/outline_clear_black_36dp.png" />
+        <mat-card-header>
+            <div mat-card-avatar class="one"></div>
+            <mat-card-title>Team: {{data ? data.name : ""}}</mat-card-title>
+            <mat-card-subtitle>Detailed view</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <mat-tab-group>
+                <mat-tab label="Information">
+                    <div class="row">
+                        <div class="col-sm">
+                            <mat-list>
+                                <mat-list-item><b>Description:</b>xxx</mat-list-item>
+                                <mat-list-item><b>Statistics:</b>odkaz</mat-list-item>
+                                <!-- <mat-list-item *ngFor="let player of players"></mat-list-item> -->
+                            </mat-list>
+                        </div>
+                        <div class="col-sm">
+                            <mat-list>
+                                <mat-list-item><b>Players:</b></mat-list-item>
+                                <!-- <mat-list-item *ngFor="let player of players"></mat-list-item> -->
+                            </mat-list>
+                        </div>
+                    </div>
+                </mat-tab>
+                <mat-tab label="Requests">
+                    <mat-list>
+                        <mat-list-item><b>Applicants:</b></mat-list-item>
+                        <!-- <mat-list-item *ngFor="let player of pendingPlayers">
+                            <span class="mr-2">player1</span>
+                            <button class="mr-2" mat-raised-button color="primary" (click)="accept(player)">Accept</button>
+                            <button mat-raised-button color="warn" (click)="decline(player)">Decline</button>
+                        </mat-list-item> -->
+                    </mat-list>
+                </mat-tab>
+            </mat-tab-group>
+        </mat-card-content>
+    </mat-card>
+</div>
