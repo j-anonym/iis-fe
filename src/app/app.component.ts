@@ -3,6 +3,7 @@ import {Router} from "@angular/router";
 import {AuthenticationService} from "./login/authentication.service";
 import { Account} from "./login/account";
 import { Globals } from './globals';
+import * as jwt_decode from 'jwt-decode';
 
 @Component({
   selector: 'app-root',
@@ -16,6 +17,8 @@ export class AppComponent implements OnInit {
   decide = false;
   current: Account;
   message = '';
+  tok = '';
+  usrname = '';
 
   logged = false;
 
@@ -25,6 +28,7 @@ export class AppComponent implements OnInit {
       private authService:AuthenticationService,
   ) {
     this.authService.current.subscribe(x => this.current = x);
+    this.tok = this.authService.currentVal.token;
   }
 
   //@HostListener('check')
@@ -36,6 +40,8 @@ export class AppComponent implements OnInit {
     console.log('hello!');
     this.arr.push('jedna');
     this.arr.push('dva');
+    const decoded = jwt_decode(this.tok);
+    this.usrname = decoded['sub'];
   }
 
   login() {
