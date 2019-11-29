@@ -20,33 +20,27 @@ export class AppComponent implements OnInit {
   tok = '';
   usrname = '';
 
-  logged = false;
 
   constructor(
       private globals: Globals,
       private router: Router,
-      private authService:AuthenticationService,
+      private authService:AuthenticationService
   ) {
     this.authService.current.subscribe(x => this.current = x);
-    //this.tok = this.authService.currentVal.token;
+    if (this.authService.currentVal) {this.router.navigate(['/success']); this.globals.logged = true;
+      this.tok = this.authService.currentVal.token; const decoded = jwt_decode(this.tok); this.usrname = decoded['sub'];}
   }
-
-  //@HostListener('check')
-  //check() {
-    //this.logged = true;
-  //}
 
   ngOnInit() {
     console.log('hello!');
     this.arr.push('jedna');
     this.arr.push('dva');
-    const decoded = jwt_decode(this.tok);
-    this.usrname = decoded['sub'];
   }
 
   login() {
     this.router.navigate(['/login']);
   }
+
 
   logout() {
     this.authService.logOut();
