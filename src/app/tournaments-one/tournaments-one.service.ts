@@ -41,14 +41,14 @@ export class TournamentsOneService {
   }
 
   acceptTeam(id_tournament, id_team) {
-    return this.http.get("http://localhost:8080/api/tournament/team/accept/"+id_tournament+"/"+id_team);
+    return this.http.put("http://localhost:8080/api/tournament/team/accept/"+id_tournament+"/"+id_team, null);
   }
 
   declinePlayer(id_tournament, id_player) {
-    return this.http.put("http://localhost:8080/api/tournament/player/decline/"+id_tournament+"/"+id_player, null);
+    return this.http.delete("http://localhost:8080/api/tournament/player/decline/"+id_tournament+"/"+id_player);
   }
 
   declineTeam(id_tournament, id_team) {
-    return this.http.get("http://localhost:8080/api/tournament/team/decline/"+id_tournament+"/"+id_team);
+    return this.http.delete("http://localhost:8080/api/tournament/team/decline/"+id_tournament+"/"+id_team);
   }
 }

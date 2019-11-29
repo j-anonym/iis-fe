@@ -4,7 +4,6 @@ import { MatTableDataSource, MatDialog } from '@angular/material';
 import * as moment from 'moment';
 import { TournamentsAllDialogComponent } from '../tournaments-all-dialog/tournaments-all-dialog.component';
 import { Router } from '@angular/router';
-import {MatPaginator} from '@angular/material/paginator';
 
 @Component({
   selector: 'app-tournaments-all',

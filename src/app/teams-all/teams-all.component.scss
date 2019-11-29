@@ -1,0 +1,13 @@
+table {
+    width: 100%;
+}
+
+.teams {
+    background-image: url('../../assets/icons/outline_people_black_36dp.png');
+    background-size: cover;
+}
+
+.mat-row:hover {
+    background-color: rgba(0, 0, 0, 0.100);
+    cursor: pointer;
+}

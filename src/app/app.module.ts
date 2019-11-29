@@ -23,6 +23,9 @@ import { TournamentsManageDialogComponent } from './tournaments-manage-dialog/to
 import { TournamentsOneComponent } from './tournaments-one/tournaments-one.component';
 import { TournamentsAllDialogComponent } from './tournaments-all-dialog/tournaments-all-dialog.component';
 import { TournamentsOneDialogComponent } from './tournaments-one-dialog/tournaments-one-dialog.component';
+import { TeamsAllComponent } from './teams-all/teams-all.component';
+import { TeamsCreateComponent } from './teams-create/teams-create.component';
+import { TeamsManageComponent } from './teams-manage/teams-manage.component';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,10 @@ import { TournamentsOneDialogComponent } from './tournaments-one-dialog/tourname
     TournamentsManageDialogComponent,
     TournamentsOneComponent,
     TournamentsAllDialogComponent,
-    TournamentsOneDialogComponent
+    TournamentsOneDialogComponent,
+    TeamsAllComponent,
+    TeamsCreateComponent,
+    TeamsManageComponent
   ],
   imports: [
     BrowserModule,
