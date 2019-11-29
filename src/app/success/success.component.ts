@@ -1,17 +1,16 @@
-import { Component , OnInit} from '@angular/core';
-import { Account} from "../login/account";
+import { Component } from '@angular/core';
 import { AuthenticationService} from "../login/authentication.service";
-import { AccountService} from "../login/account.service";
-import {first} from "rxjs/operators";
+import * as jwt_decode from 'jwt-decode';
 
 @Component({ templateUrl: 'success.component.html' })
 export class SuccessComponent {
-    current_acc = '';
-    constructor(
-        private accountService: AccountService,
-        private authService: AuthenticationService){this.current_acc = this.authService.currentVal.token}
+    tok = '';
+    welcome = '';
+    constructor(private authService: AuthenticationService) {this.tok = this.authService.currentVal.token;}
+
 
     ngOnInit() {
-        console.log(this.current_acc);
+        const decoded = jwt_decode(this.tok);
+        this.welcome = decoded['sub'];
     }
 }
