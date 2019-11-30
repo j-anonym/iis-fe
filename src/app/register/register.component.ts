@@ -29,7 +29,7 @@ export class RegisterComponent implements OnInit {
           password: ['', Validators.required],
           name: ['', Validators.required],
           surname: ['', Validators.required],
-          nationality: ['', Validators.required],
+          nationality:['', Validators.required],
       });
   }
 
