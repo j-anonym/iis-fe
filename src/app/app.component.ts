@@ -27,8 +27,7 @@ export class AppComponent implements OnInit {
       private authService:AuthenticationService
   ) {
     this.authService.current.subscribe(x => this.current = x);
-    if (this.authService.currentVal) {this.router.navigate(['/success']); this.globals.logged = true;
-      this.tok = this.authService.currentVal.token; const decoded = jwt_decode(this.tok); this.usrname = decoded['sub'];}
+    if (this.authService.currentVal) {this.router.navigate(['/success']); this.globals.logged = true;}
   }
 
   ngOnInit() {
