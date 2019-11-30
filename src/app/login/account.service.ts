@@ -6,10 +6,10 @@ export class AccountService {
     constructor(private http:HttpClient) {}
 
     getLoggedUserId(username) {
-        return this.http.get("http://localhost:8087/api/person/getloggeduserid/" + username);
+        return this.http.get("http://localhost:8080/api/person/getloggeduserid/" + username);
     }
 
     getLoggedUserAdminStatus(username) {
-        return this.http.get("http://localhost:8087/api/person/getloggeduseradminstatus/" + username);
+        return this.http.get("http://localhost:8080/api/person/getloggeduseradminstatus/" + username);
     }
 }
