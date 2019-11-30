@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { TestComponent } from './test/test.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
 import { TournamentsAllComponent } from './tournaments-all/tournaments-all.component';
 import { TournamentsCreateComponent } from './tournaments-create/tournaments-create.component';
@@ -11,15 +10,12 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { LogoutComponent } from './logout/logout.component';
 import { AuthGaurdService } from './logout/auth-gaurd.service';
-import {SuccessComponent} from "./success/success.component";
+import { SuccessComponent} from './success/success.component';
 import { TeamsAllComponent } from './teams-all/teams-all.component';
 import { TeamsCreateComponent } from './teams-create/teams-create.component';
 import { TeamsManageComponent } from './teams-manage/teams-manage.component';
-<<<<<<< Updated upstream
 import { TeamsOneComponent } from './teams-one/teams-one.component';
-=======
 import { StatisticsComponent } from './statistics/statistics.component';
->>>>>>> Stashed changes
 
 
 const routes: Routes = [
@@ -31,7 +27,7 @@ const routes: Routes = [
   {path: 'admin', component: AdminPageComponent},
   {path: 'tournament/:id', component: TournamentsOneComponent},
   {path: 'login', component: LoginComponent },
-  {path: 'logout', component: LogoutComponent,canActivate:[AuthGaurdService]},
+  {path: 'logout', component: LogoutComponent, canActivate: [AuthGaurdService]},
   {path: 'register', component: RegisterComponent },
   {path: 'success', component: SuccessComponent},
   {path: 'teams/all', component: TeamsAllComponent},
