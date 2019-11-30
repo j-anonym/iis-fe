@@ -1,11 +1,15 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
-import { Account} from "./account";
-
 @Injectable({providedIn: 'root'})
 export class AccountService {
     constructor(private http:HttpClient) {}
-    getAll() {
+
+    getLoggedUserId(username) {
+        return this.http.get("http://localhost:8087/api/person/getloggeduserid/" + username);
+    }
+
+    getLoggedUserAdminStatus(username) {
+        return this.http.get("http://localhost:8087/api/person/getloggeduseradminstatus/" + username);
     }
 }
