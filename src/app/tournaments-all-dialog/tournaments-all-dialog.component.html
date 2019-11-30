@@ -10,14 +10,23 @@
         <span class="filler"></span>
         <button mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
     </div>
+    <div *ngIf="chooseDialog == 1">
+        <p>Waiting for response...</p>
+        <span class="filler"></span>
+        <button mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
+    </div>
     <div *ngIf="chooseDialog == 2">
         <p>Already Joined...</p>
         <span class="filler"></span>
         <button mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
     </div>
-    <div *ngIf="chooseDialog == 1">
-        <p>Waiting for response...</p>
+    <div *ngIf="chooseDialog == 3">
+        <p>Choose team:</p>
+        <mat-select [(value)]="chosenTeam" required>
+            <mat-option *ngFor="let team of ownTeams" value="team.id_team">{{team.name}}</mat-option>
+        </mat-select>   
         <span class="filler"></span>
-        <button mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
+        <button class="mt-2" mat-raised-button (click)="joinTeamChosen()">Join</button>
+        <button class="mt-2" mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
     </div>
 </div>

@@ -13,16 +13,24 @@
 
                 <ng-container matColumnDef="id_player_1">
                     <th mat-header-cell *matHeaderCellDef>Player 1</th>
-                    <td mat-cell *matCellDef="let element">{{element.id_player_1 ? element.id_player_1 : "Free"}}</td>
+                    <td mat-cell *matCellDef="let element">{{element.id_player_1 ? element.id_player_1 : "&lt;Free&gt;"}}</td>
                 </ng-container>
 
                 <ng-container matColumnDef="id_player_2">
                     <th mat-header-cell *matHeaderCellDef>Player 2</th>
-                    <td mat-cell *matCellDef="let element">{{element.id_player_2 ? element.id_player_2 : "Free"}}</td>
+                    <td mat-cell *matCellDef="let element">{{element.id_player_2 ? element.id_player_2 : "&lt;Free&gt;"}}</td>
+                </ng-container>
+
+                <ng-container matColumnDef="action">
+                    <th mat-header-cell *matHeaderCellDef>Action</th>
+                    <td mat-cell *matCellDef="let element"> 
+                        <button mat-button *ngIf="globals.logged" (click)="openDialog(element)">Join</button>
+                        <button mat-button (click)="getTeam(element)">View</button>
+                    </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayColumns"></tr>
-                <tr mat-row *matRowDef="let row; columns: displayColumns;" (click)="getTeam(row)"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayColumns;"></tr>
             </table>
         </mat-card-content>
     </mat-card>

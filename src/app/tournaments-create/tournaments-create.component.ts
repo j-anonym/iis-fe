@@ -6,6 +6,7 @@ import * as moment from 'moment';
 import { TournamentsCreateDialogComponent } from '../tournaments-create-dialog/tournaments-create-dialog.component';
 import { MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'app-tournaments-create',
@@ -18,7 +19,7 @@ export class TournamentsCreateComponent implements OnInit {
   currentDate;
   minDateTo;
 
-  constructor(private createService : TournamentsCreateService, public dialog: MatDialog, private router: Router) { }
+  constructor(private createService : TournamentsCreateService, public dialog: MatDialog, private router: Router, private globals: Globals) { }
 
   ngOnInit() {
     this.currentDate = moment().toDate();
@@ -33,7 +34,8 @@ export class TournamentsCreateComponent implements OnInit {
       capacity: new FormControl(null, [Validators.required, Validators.max(64)]),
       prize: new FormControl(null, [Validators.required]),
       cost: new FormControl(null, [Validators.required]),
-      sponsors: new FormControl('', [Validators.maxLength(512)])
+      sponsors: new FormControl('', [Validators.maxLength(512)]),
+      id_staff: new FormControl(this.globals.loggeduserid)
     });
   }
 
@@ -62,7 +64,7 @@ export class TournamentsCreateComponent implements OnInit {
     let id_created;
 
     dialogRef.afterClosed().subscribe(() => {
-      this.createService.getLastCreatedTournament(1).subscribe(result => {
+      this.createService.getLastCreatedTournament(this.globals.loggeduserid).subscribe(result => {
         id_created = result;
         console.log(id_created);
         this.router.navigate(['tournament', id_created]);

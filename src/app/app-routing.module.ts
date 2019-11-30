@@ -15,6 +15,7 @@ import {SuccessComponent} from "./success/success.component";
 import { TeamsAllComponent } from './teams-all/teams-all.component';
 import { TeamsCreateComponent } from './teams-create/teams-create.component';
 import { TeamsManageComponent } from './teams-manage/teams-manage.component';
+import { TeamsOneComponent } from './teams-one/teams-one.component';
 
 
 const routes: Routes = [
@@ -22,7 +23,7 @@ const routes: Routes = [
   {path: 'dashboard', component: DashboardComponent},
   {path: 'tournaments/all', component: TournamentsAllComponent},
   {path: 'tournaments/create', component: TournamentsCreateComponent},
-  {path: 'tournaments/manage', component: TournamentsManageComponent},
+  {path: 'tournaments/involved', component: TournamentsManageComponent},
   {path: 'admin', component: AdminPageComponent},
   {path: 'tournament/:id', component: TournamentsOneComponent},
   {path: 'login', component: LoginComponent },
@@ -31,7 +32,8 @@ const routes: Routes = [
   {path: 'success', component: SuccessComponent},
   {path: 'teams/all', component: TeamsAllComponent},
   {path: 'teams/create', component: TeamsCreateComponent},
-  {path: 'teams/involved', component: TeamsManageComponent}
+  {path: 'teams/involved', component: TeamsManageComponent},
+  {path: 'team/:id', component: TeamsOneComponent}
 ];
 
 @NgModule({

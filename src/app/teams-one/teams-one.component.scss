@@ -1,13 +1,16 @@
-.own {
+.one {
     background-image: url('../../assets/icons/outline_sports_baseball_black_36dp.png');
     background-size: cover;
 }
 
-table {
-    width: 100%;
+.filler {
+    flex: 1 1 auto;
+ }
+
+.row {
+    width: 99%;
 }
 
-.mat-row:hover {
-    background-color: rgba(0, 0, 0, 0.100);
-    cursor: pointer;
+b {
+    margin-right: 5px;
 }

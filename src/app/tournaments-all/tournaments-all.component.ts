@@ -4,6 +4,7 @@ import { MatTableDataSource, MatDialog } from '@angular/material';
 import * as moment from 'moment';
 import { TournamentsAllDialogComponent } from '../tournaments-all-dialog/tournaments-all-dialog.component';
 import { Router } from '@angular/router';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'app-tournaments-all',
@@ -28,7 +29,7 @@ export class TournamentsAllComponent implements OnInit {
   pastDataSource;
   displayPast: string[] = ['name', 'date_to', 'action'];
 
-  constructor(private allService: TournamentsAllService, public dialog: MatDialog, private router: Router) { }
+  constructor(private allService: TournamentsAllService, public dialog: MatDialog, private router: Router, public globals: Globals) { }
 
   ngOnInit() {
     this.allService.getAllTournaments().subscribe(response => {

@@ -4,6 +4,7 @@ import { MatTableDataSource, MatDialog } from '@angular/material';
 import { TournamentsManageDialogComponent } from '../tournaments-manage-dialog/tournaments-manage-dialog.component';
 import { Router } from '@angular/router';
 import * as moment from 'moment';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'app-tournaments-manage',
@@ -20,11 +21,12 @@ export class TournamentsManageComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'date_from', 'date_to', 'occupation', 'place'];
 
-  constructor(private manageService: TournamentsManageService, public dialog: MatDialog, private router: Router) { }
+  constructor(private manageService: TournamentsManageService, public dialog: MatDialog, private router: Router, private globals: Globals) { }
 
   ngOnInit() {
-    this.manageService.getAllTournamentsByUser(1).subscribe(response => {
+    this.manageService.getAllTournamentsByUser(this.globals.loggeduserid).subscribe(response => {
       let data = JSON.parse(JSON.stringify(response));
+      console.log(data)
       let date_to;
       let date_now = moment().format("YYYY-MM-DD");
 

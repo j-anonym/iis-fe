@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { TeamsCreateService } from './teams-create.service';
 import { TournamentsCreateDialogComponent } from '../tournaments-create-dialog/tournaments-create-dialog.component';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'app-teams-create',
@@ -14,11 +15,11 @@ export class TeamsCreateComponent implements OnInit {
 
   public createForm: FormGroup;
 
-  constructor(public dialog: MatDialog, private router: Router, private createService: TeamsCreateService) { }
+  constructor(public dialog: MatDialog, private router: Router, private createService: TeamsCreateService, private globals: Globals) { }
 
   ngOnInit() {
     this.createForm = new FormGroup({
-      id_player_1: new FormControl(1),
+      id_player_1: new FormControl(this.globals.loggeduserid),
       name: new FormControl(null, [Validators.required, Validators.maxLength(128)]),
       logo: new FormControl(null, [Validators.required])
     });
@@ -31,7 +32,6 @@ export class TeamsCreateComponent implements OnInit {
   submit(data) {
     this.createService.createTeam(data).subscribe();
     this.openDialog();
-    console.log(data);
   }
 
   openDialog(): void {
@@ -45,11 +45,10 @@ export class TeamsCreateComponent implements OnInit {
     let id_created;
 
     dialogRef.afterClosed().subscribe(() => {
-      // this.createService.getLastCreatedTournament(1).subscribe(result => {
-      //   id_created = result;
-      //   console.log(id_created);
-      //   this.router.navigate(['tournament', id_created]);
-      // });
+      this.createService.getLastCreated(this.globals.loggeduserid).subscribe(result => {
+        id_created = result;
+        this.router.navigate(['/team', id_created]);
+      });
     });
   }
 

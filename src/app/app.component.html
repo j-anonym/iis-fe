@@ -18,10 +18,10 @@
       <button mat-menu-item [routerLink]="'/tournaments/all'">
         <span>List All</span>
       </button>
-      <button mat-menu-item [routerLink]="'/tournaments/create'">
+      <button *ngIf="globals.logged" mat-menu-item [routerLink]="'/tournaments/create'">
         <span>Create New</span>
       </button>
-      <button mat-menu-item [routerLink]="'/tournaments/manage'">
+      <button *ngIf="globals.logged" mat-menu-item [routerLink]="'/tournaments/involved'">
         <span>Involved</span>
       </button>
     </mat-menu>
@@ -30,10 +30,10 @@
       <button mat-menu-item [routerLink]="'/teams/all'">
         <span>List All</span>
       </button>
-      <button mat-menu-item [routerLink]="'/teams/create'">
+      <button *ngIf="globals.logged" mat-menu-item [routerLink]="'/teams/create'">
         <span>Create New</span>
       </button>
-      <button mat-menu-item [routerLink]="'/teams/manage'">
+      <button *ngIf="globals.logged" mat-menu-item [routerLink]="'/teams/involved'">
         <span>Involved</span>
       </button>
     </mat-menu>
