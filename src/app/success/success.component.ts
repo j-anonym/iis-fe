@@ -1,30 +1,30 @@
 import { Component } from '@angular/core';
-import { AuthenticationService} from "../login/authentication.service";
+import { AuthenticationService} from '../login/authentication.service';
 import * as jwt_decode from 'jwt-decode';
-import {Globals} from "../globals";
-import {AccountService} from "../login/account.service";
+import {Globals} from '../globals';
+import {AccountService} from '../login/account.service';
 
 @Component({ templateUrl: 'success.component.html' })
 export class SuccessComponent {
     tok = '';
-    usrnm: string = '';
+    usrnm = '';
     constructor(private globals: Globals,
-                private accServis:AccountService,
-                private authService: AuthenticationService) {this.tok = this.authService.currentVal.token;}
+                private accServis: AccountService,
+                private authService: AuthenticationService) {this.tok = this.authService.currentVal.token; }
 
 
 
     ngOnInit() {
         const decoded = jwt_decode(this.tok);
-        this.usrnm = decoded['sub'];
+        this.usrnm = decoded.sub;
         this.globals.loggeduser = this.usrnm;
         this.accServis.getLoggedUserId(this.usrnm).subscribe(result => {
             this.globals.loggeduserid = result;
             console.log(this.globals.loggeduserid);
         });
         this.accServis.getLoggedUserAdminStatus(this.usrnm).subscribe( res => {
-            this.globals.logged_user_is_admin = res;
-            console.log(this.globals.logged_user_is_admin);
+            this.globals.isAdmin = JSON.parse(JSON.stringify(res));
+            console.log(this.globals.isAdmin);
         });
     }
 }
