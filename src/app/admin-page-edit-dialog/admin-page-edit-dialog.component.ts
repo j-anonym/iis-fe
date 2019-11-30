@@ -23,18 +23,18 @@ export class AdminPageEditDialogComponent implements OnInit {
 
     this.currentDate = moment().toDate();
 
-    let date = moment(this.data.user.birth);
+    const date = new Date(this.data.user.birth);
     console.log(date);
 
     this.createForm = new FormGroup({
       id_user: new FormControl(this.data.user.id_user),
-      name: new FormControl(this.data.user.name, [Validators.required, Validators.maxLength(128)]), //TODO default values datepicker
-      surname: new FormControl(this.data.user.surname, [Validators.required, Validators.maxLength(128)]),
-      birth: new FormControl(date, [Validators.required]), // TODO forbid date to past
-      nationality: new FormControl(this.data.user.nationality, [Validators.required, Validators.maxLength(2), Validators.minLength(2)]),
-      is_admin: new FormControl(this.data.user._admin, [Validators.required]),
-      sex: new FormControl(this.data.user.sex, [Validators.required]),
-      is_left_handed: new FormControl(this.data.user._left_handed, [Validators.required]),
+      name: new FormControl(this.data.user.name, [ Validators.maxLength(128), Validators.required ]), //TODO default values datepicker
+      surname: new FormControl(this.data.user.surname, [ Validators.maxLength(128), Validators.required ]),
+      birth: new FormControl(date), // TODO forbid date to past
+      nationality: new FormControl(this.data.user.nationality, [ Validators.maxLength(2), Validators.minLength(2), Validators.required ]),
+      is_admin: new FormControl(this.data.user.is_admin, Validators.required),
+      sex: new FormControl(this.data.user.sex),
+      is_left_handed: new FormControl(this.data.user.is_left_handed),
     });
 
   }

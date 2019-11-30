@@ -27,8 +27,7 @@
                     <mat-label>Choose birth date</mat-label>
                     <input matInput [max]="currentDate" [matDatepicker]="pickerTo" formControlName="birth" >
                     <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
-                    <mat-datepicker [startAt]="date" #pickerTo></mat-datepicker>
-                    <span matSuffix>*</span>
+                    <mat-datepicker #pickerTo></mat-datepicker>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
@@ -54,9 +53,7 @@
                     <mat-select [(value)]="sex" formControlName="sex">
                         <mat-option value="M">Man</mat-option>
                         <mat-option value="W">Woman</mat-option>
-                        <mat-option value="MW">Undefined</mat-option>
                     </mat-select>
-                    <span matSuffix>*</span>
                 </mat-form-field>
 
                 <mat-form-field class="example-full-width">
@@ -65,7 +62,6 @@
                         <mat-option [value]="true">Left</mat-option>
                         <mat-option [value]="false">Right</mat-option>
                     </mat-select>
-                    <span matSuffix>*</span>
                 </mat-form-field>
 
                 <mat-card-actions >

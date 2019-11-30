@@ -15,7 +15,6 @@ export class AdminPageComponent implements OnInit {
 
   users;
 
-
   constructor(private adminService: AdminPageService, public dialog: MatDialog) {}
 
   ngOnInit() {
@@ -29,12 +28,12 @@ export class AdminPageComponent implements OnInit {
       width: '400px',
       hasBackdrop: true,
       disableClose: true,
-      data: {user: user} // TODO spravit si classu posielat tam iba objekt
+      data: {user} // TODO spravit si classu posielat tam iba objekt
     }
     );
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();
-    })
+    });
 
   }
 
@@ -43,12 +42,12 @@ export class AdminPageComponent implements OnInit {
       width: '400px',
       hasBackdrop: true,
       disableClose: true,
-      data: {user: user} // TODO spravit si classu posielat tam iba objekt
+      data: {user} // TODO spravit si classu posielat tam iba objekt
     }
     );
     dialogRef.afterClosed().subscribe(() => {
       this.ngOnInit();
-    })
+    });
 
   }
 
