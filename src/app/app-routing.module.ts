@@ -19,6 +19,7 @@ import { StatisticsComponent } from './statistics/statistics.component';
 
 
 const routes: Routes = [
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
   {path: 'statistics', component: StatisticsComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'tournaments/all', component: TournamentsAllComponent},
