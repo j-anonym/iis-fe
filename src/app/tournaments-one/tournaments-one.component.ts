@@ -41,6 +41,7 @@ export class TournamentsOneComponent implements OnInit {
 
       this.oneService.getAcceptedReferees(this.id_tournament).subscribe(response => {
         this.acceptedReferees = JSON.parse(JSON.stringify(response));
+        console.log(this.acceptedReferees)
       })
 
       // singles
@@ -80,7 +81,8 @@ export class TournamentsOneComponent implements OnInit {
     if('id_user' in who) {
       this.oneService.acceptPlayer(this.id_tournament, who.id_user).subscribe(() => {this.ngOnInit();});
     } else {
-      this.oneService.acceptTeam(this.id_tournament, who.id_player).subscribe(() => {this.ngOnInit();});
+      console.log("tu som")
+      this.oneService.acceptTeam(this.id_tournament, who.id_team).subscribe(() => {this.ngOnInit();});
     }
   }
 
@@ -88,7 +90,7 @@ export class TournamentsOneComponent implements OnInit {
     if('id_user' in who) {
       this.oneService.declinePlayer(this.id_tournament, who.id_user).subscribe(() => {this.ngOnInit();});
     } else {
-      this.oneService.declineTeam(this.id_tournament, who.id_player).subscribe(() => {this.ngOnInit();});
+      this.oneService.declineTeam(this.id_tournament, who.id_team).subscribe(() => {this.ngOnInit();});
     }
   }
 

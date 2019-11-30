@@ -26,7 +26,8 @@
                         <div class="col-sm">
                             <mat-list *ngIf="data">
                                 <mat-list-item><b>{{data._singles ? "Players:" : "Teams:"}}</b></mat-list-item>
-                                <mat-list-item *ngFor="let one of accepted">{{one.name}} {{one.surname}}</mat-list-item>
+                                <span *ngIf="data._singles"><mat-list-item *ngFor="let one of accepted">{{one.name}} {{one.surname}}</mat-list-item></span>
+                                <span *ngIf="!data._singles"><mat-list-item *ngFor="let one of accepted">{{one.name}}</mat-list-item></span>
                             </mat-list>
                         </div>
                         <div class="col-sm">
@@ -53,7 +54,7 @@
                                     <button mat-raised-button color="warn" (click)="decline(player)">Decline</button>
                                 </mat-list-item>
                                 <mat-list-item *ngFor="let team of pendingTeams">
-                                    <span class="mr-2">team1</span>
+                                    <span class="mr-2">{{team.name}}</span>
                                     <button class="mr-2" mat-raised-button color="primary" (click)="accept(team)">Accept</button>
                                     <button mat-raised-button color="warn" (click)="decline(team)">Decline</button>
                                 </mat-list-item>

@@ -25,7 +25,7 @@ export class TournamentsOneService {
   }
 
   getPendingTeams(id_tournament) {
-    return this.http.get("http://localhost:8080/api/tournament/teams/getpending/"+id_tournament);
+    return this.http.get("http://localhost:8080/api/tournament/team/getpending/"+id_tournament);
   }
 
   getAcceptedPlayers(id_tournament) {
@@ -37,7 +37,7 @@ export class TournamentsOneService {
   }
 
   getAcceptedTeams(id_tournament) {
-    return this.http.get("http://localhost:8080/api/tournament/teams/getaccepted/"+id_tournament);
+    return this.http.get("http://localhost:8080/api/tournament/team/getaccepted/"+id_tournament);
   }
 
   acceptPlayer(id_tournament, id_player) {
