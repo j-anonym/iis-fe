@@ -21,12 +21,23 @@
         <button mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
     </div>
     <div *ngIf="chooseDialog == 3">
-        <p>Choose team:</p>
-        <mat-select [(value)]="chosenTeam" required>
-            <mat-option *ngFor="let team of ownTeams" value="team.id_team">{{team.name}}</mat-option>
-        </mat-select>   
+        <div>
+            <mat-form-field>
+                <mat-label>Choose team:</mat-label>
+                <mat-select [(value)]="chosenTeam" required>
+                    <mat-option *ngFor="let team of ownTeams" [value]="team.id_team">{{team.name}}</mat-option>
+                </mat-select> 
+            </mat-form-field>
+        </div>
+        <div>
+            <span class="filler"></span>
+            <button class="mt-2" mat-raised-button (click)="joinTeamChosen()">Join</button>
+            <button class="mt-2" mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
+        </div>
+    </div>
+    <div *ngIf="chooseDialog == 4">
+        <p>Gender does not match. Specify your gender in your account settings and try again!</p>
         <span class="filler"></span>
-        <button class="mt-2" mat-raised-button (click)="joinTeamChosen()">Join</button>
-        <button class="mt-2" mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
+        <button mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
     </div>
 </div>

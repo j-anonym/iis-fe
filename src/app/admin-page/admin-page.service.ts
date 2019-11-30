@@ -26,4 +26,8 @@ export class AdminPageService {
       console.log(response);
     });
   }
+
+  getUser(id_user) {
+    return this.http.get("http://localhost:8080/api/person/get/"+id_user);
+  }
 }

@@ -16,7 +16,7 @@ export class TournamentsAllService {
     return this.http.get("http://localhost:8080/api/tournament/player/join/"+id_tournament+"/"+id_player);
   }
 
-  joinTeam(id_team, id_tournament) {
+  joinTeam(id_tournament, id_team) {
     return this.http.get("http://localhost:8080/api/tournament/team/join/"+id_tournament+"/"+id_team);
   }
 
