@@ -19,7 +19,7 @@ export class SuccessComponent {
         this.usrnm = decoded.sub;
         this.globals.loggeduser = this.usrnm;
         this.accServis.getLoggedUserId(this.usrnm).subscribe(result => {
-            this.globals.loggeduserid = result;
+            this.globals.loggeduserid = JSON.parse(JSON.stringify(result));
             console.log(this.globals.loggeduserid);
         });
         this.accServis.getLoggedUserAdminStatus(this.usrnm).subscribe( res => {
