@@ -33,9 +33,15 @@ import { TournamentsOneDialogComponent } from './tournaments-one-dialog/tourname
 import { TeamsAllComponent } from './teams-all/teams-all.component';
 import { TeamsCreateComponent } from './teams-create/teams-create.component';
 import { TeamsManageComponent } from './teams-manage/teams-manage.component';
+<<<<<<< Updated upstream
 import { TeamsOneComponent } from './teams-one/teams-one.component';
 import { TeamsAllDialogComponent } from './teams-all-dialog/teams-all-dialog.component';
 import { TeamsOneDialogComponent } from './teams-one-dialog/teams-one-dialog.component';
+=======
+import { StatisticsComponent } from './statistics/statistics.component';
+import {MatSortModule} from '@angular/material/sort';
+
+>>>>>>> Stashed changes
 
 @NgModule({
   declarations: [
@@ -60,9 +66,13 @@ import { TeamsOneDialogComponent } from './teams-one-dialog/teams-one-dialog.com
     TeamsAllComponent,
     TeamsCreateComponent,
     TeamsManageComponent,
+<<<<<<< Updated upstream
     TeamsOneComponent,
     TeamsAllDialogComponent,
     TeamsOneDialogComponent
+=======
+    StatisticsComponent
+>>>>>>> Stashed changes
   ],
   imports: [
     BrowserModule,
@@ -86,7 +96,8 @@ import { TeamsOneDialogComponent } from './teams-one-dialog/teams-one-dialog.com
     MatTableModule,
     MatTabsModule,
     MatPaginatorModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatSortModule
   ],
   entryComponents: [
     AdminPageDialogComponent,

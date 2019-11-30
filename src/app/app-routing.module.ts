@@ -15,11 +15,15 @@ import {SuccessComponent} from "./success/success.component";
 import { TeamsAllComponent } from './teams-all/teams-all.component';
 import { TeamsCreateComponent } from './teams-create/teams-create.component';
 import { TeamsManageComponent } from './teams-manage/teams-manage.component';
+<<<<<<< Updated upstream
 import { TeamsOneComponent } from './teams-one/teams-one.component';
+=======
+import { StatisticsComponent } from './statistics/statistics.component';
+>>>>>>> Stashed changes
 
 
 const routes: Routes = [
-  {path: 'test', component: TestComponent},
+  {path: 'statistics', component: StatisticsComponent},
   {path: 'dashboard', component: DashboardComponent},
   {path: 'tournaments/all', component: TournamentsAllComponent},
   {path: 'tournaments/create', component: TournamentsCreateComponent},
