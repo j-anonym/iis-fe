@@ -25,6 +25,7 @@ export class TournamentsManageComponent implements OnInit {
   ngOnInit() {
     this.manageService.getAllTournamentsByUser(1).subscribe(response => {
       let data = JSON.parse(JSON.stringify(response));
+      console.log(data)
       let date_to;
       let date_now = moment().format("YYYY-MM-DD");
 
