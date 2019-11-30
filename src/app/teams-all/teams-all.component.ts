@@ -3,6 +3,7 @@ import { TeamsAllService } from './teams-all.service';
 import { MatTableDataSource, MatDialog } from '@angular/material';
 import { Router } from '@angular/router';
 import { TeamsAllDialogComponent } from '../teams-all-dialog/teams-all-dialog.component';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'app-teams-all',
@@ -14,7 +15,7 @@ export class TeamsAllComponent implements OnInit {
   displayColumns: string[] = ['name', 'id_player_1', 'id_player_2', 'action'];
   dataSource;
 
-  constructor(private allService: TeamsAllService, private router: Router, public dialog: MatDialog) { }
+  constructor(private allService: TeamsAllService, private router: Router, public dialog: MatDialog, public globals: Globals) { }
 
   ngOnInit() {
     this.allService.getAllTeams().subscribe(response => {

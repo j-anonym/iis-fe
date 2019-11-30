@@ -32,6 +32,10 @@ export class TournamentsOneService {
     return this.http.get("http://localhost:8080/api/tournament/player/getaccepted/"+id_tournament);
   }
 
+  getAcceptedReferees(id_tournament) {
+    return this.http.get("http://localhost:8080/api/tournament/player/getacceptedreferees/"+id_tournament);
+  }
+
   getAcceptedTeams(id_tournament) {
     return this.http.get("http://localhost:8080/api/tournament/teams/getaccepted/"+id_tournament);
   }

@@ -3,6 +3,7 @@ import { TournamentsOneService } from './tournaments-one.service';
 import { MatDialog } from '@angular/material';
 import { TournamentsOneDialogComponent } from '../tournaments-one-dialog/tournaments-one-dialog.component';
 import { ActivatedRoute } from '@angular/router';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'app-tournaments-one',
@@ -19,8 +20,10 @@ export class TournamentsOneComponent implements OnInit {
   pendingTeams = [];
 
   accepted = [];
+  acceptedReferees= [];
 
-  constructor(private oneService: TournamentsOneService, public dialog: MatDialog, private route: ActivatedRoute) { }
+  constructor(private oneService: TournamentsOneService, public dialog: MatDialog, private route: ActivatedRoute, 
+              public globals: Globals) { }
 
   ngOnInit() {
     this.id_tournament = this.route.snapshot.paramMap.get("id");
@@ -34,6 +37,10 @@ export class TournamentsOneComponent implements OnInit {
       this.oneService.getPendingReferees(this.id_tournament).subscribe(response => {
         this.pendingReferees = JSON.parse(JSON.stringify(response));
         // console.log(this.pendingReferees);
+      })
+
+      this.oneService.getAcceptedReferees(this.id_tournament).subscribe(response => {
+        this.acceptedReferees = JSON.parse(JSON.stringify(response));
       })
 
       // singles
@@ -69,18 +76,19 @@ export class TournamentsOneComponent implements OnInit {
   }
 
   accept(who) {
-    if('id_player' in who) {
-      this.oneService.acceptPlayer(who.id_tournament, who.id_player).subscribe(() => {this.ngOnInit();});
+    console.log(who);
+    if('id_user' in who) {
+      this.oneService.acceptPlayer(this.id_tournament, who.id_user).subscribe(() => {this.ngOnInit();});
     } else {
-      this.oneService.acceptTeam(who.id_tournament, who.id_player).subscribe(() => {this.ngOnInit();});
+      this.oneService.acceptTeam(this.id_tournament, who.id_player).subscribe(() => {this.ngOnInit();});
     }
   }
 
   decline(who) {
-    if('id_player' in who) {
-      this.oneService.declinePlayer(who.id_tournament, who.id_player).subscribe(() => {this.ngOnInit();});
+    if('id_user' in who) {
+      this.oneService.declinePlayer(this.id_tournament, who.id_user).subscribe(() => {this.ngOnInit();});
     } else {
-      this.oneService.declinePlayer(who.id_tournament, who.id_player).subscribe(() => {this.ngOnInit();});
+      this.oneService.declineTeam(this.id_tournament, who.id_player).subscribe(() => {this.ngOnInit();});
     }
   }
 
