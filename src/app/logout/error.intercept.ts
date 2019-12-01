@@ -15,8 +15,8 @@ export class ErrorInterceptor implements HttpInterceptor {
             if (err.status === 401) {
                 this.authService.logOut();
             }
-            const error = 'Username or password is incorrect';
-            //const error = err.error.message || err.statusText;
+            //const error = 'Username or password is incorrect';
+            const error = err.error.message || err.statusText;
             return throwError(error);
         }))
     }
