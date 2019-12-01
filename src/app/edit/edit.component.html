@@ -41,7 +41,7 @@
 
                 <mat-form-field class="example-full-width">
                     <mat-label>Sex</mat-label>
-                    <mat-select [(value)]="sex" formControlName="sex">
+                    <mat-select formControlName="sex">
                         <mat-option value="M">Man</mat-option>
                         <mat-option value="W">Woman</mat-option>
                     </mat-select>
@@ -49,7 +49,7 @@
 
                 <mat-form-field class="example-full-width">
                     <mat-label>Primary hand:</mat-label>
-                    <mat-select [(value)]="is_left_handed" formControlName="is_left_handed">
+                    <mat-select formControlName="is_left_handed">
                         <mat-option [value]="true">Left</mat-option>
                         <mat-option [value]="false">Right</mat-option>
                     </mat-select>
