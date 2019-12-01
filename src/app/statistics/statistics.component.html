@@ -10,6 +10,11 @@
                 <mat-card-content>
                     <mat-tab-group>
                         <mat-tab label="Players">
+                            <mat-form-field appearance="fill" class="search">
+                                <input matInput type="text" (keyup)="doFilter($event.target.value)"
+                                    placeholder="Search">
+                                <mat-icon matSuffix>search</mat-icon>
+                            </mat-form-field>
                             <table mat-table [dataSource]="playerDataSource" matSort>
 
                                 <ng-container matColumnDef="name">
@@ -51,8 +56,13 @@
                                 <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
                             </table>
                         </mat-tab>
-                        <mat-tab label="Teams">
-                            <table mat-table [dataSource]="teamDataSource" matSort>
+                        <mat-tab label="Teams" >
+                            <mat-form-field appearance="fill" class="search">
+                                <input matInput type="text" (keyup)="doFilterTeam($event.target.value)"
+                                    placeholder="Search">
+                                <mat-icon matSuffix>search</mat-icon>
+                            </mat-form-field>
+                            <table mat-table [dataSource]="teamDataSource" matSort  #sBSort="matSort" >
 
                                 <ng-container matColumnDef="name">
                                     <th mat-header-cell *matHeaderCellDef mat-sort-header>Name</th>

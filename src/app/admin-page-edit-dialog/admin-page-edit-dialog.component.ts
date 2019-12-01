@@ -28,7 +28,7 @@ export class AdminPageEditDialogComponent implements OnInit {
 
     this.createForm = new FormGroup({
       id_user: new FormControl(this.data.user.id_user),
-      name: new FormControl(this.data.user.name, [ Validators.maxLength(128), Validators.required ]), //TODO default values datepicker
+      name: new FormControl(this.data.user.name, [ Validators.maxLength(128), Validators.required ]),
       surname: new FormControl(this.data.user.surname, [ Validators.maxLength(128), Validators.required ]),
       birth: new FormControl(date), // TODO forbid date to past
       nationality: new FormControl(this.data.user.nationality, [ Validators.maxLength(2), Validators.minLength(2), Validators.required ]),

@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef  } from '@angular/core';
 import { StatisticsService } from './statistics.service';
 import { MatTableDataSource, MatSort } from '@angular/material';
 
@@ -18,9 +18,11 @@ export interface NStat {
   templateUrl: './statistics.component.html',
   styleUrls: ['./statistics.component.scss']
 })
-export class StatisticsComponent implements OnInit {
+export class StatisticsComponent implements OnInit, AfterViewInit {
 
   @ViewChild(MatSort, {static: false}) sort: MatSort;
+  @ViewChild('sBSort', {static: false}) sBSort: MatSort;
+
 
   playerDataSource = new MatTableDataSource<NStat>();
   teamDataSource = new MatTableDataSource<NStat>();
@@ -28,7 +30,7 @@ export class StatisticsComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'won_matches', 'lost_matches', 'won_sets', 'lost_sets', 'won_games', 'lost_games'];
 
-  constructor(private statisticService: StatisticsService) { }
+  constructor(private statisticService: StatisticsService, private cdRef: ChangeDetectorRef) { }
 
   ngOnInit() {
     this.statisticService.getAllStatisticsPlayers().subscribe(response => {
@@ -41,10 +43,17 @@ export class StatisticsComponent implements OnInit {
 
   }
 
-  ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
-    this.playerDataSource.sort = this.sort;
+  public doFilter(value: string) {
+    this.playerDataSource.filter = value.trim().toLocaleLowerCase();
   }
 
+  public doFilterTeam(value: string) {
+    this.teamDataSource.filter = value.trim().toLocaleLowerCase();
+  }
+
+  ngAfterViewInit(): void {
+    this.playerDataSource.sort = this.sort;
+    this.teamDataSource.sort = this.sBSort;
+    this.cdRef.detectChanges();
+  }
 }
