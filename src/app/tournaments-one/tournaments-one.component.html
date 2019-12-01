@@ -1,5 +1,5 @@
 <div class="card-body">
-    <mat-card *ngIf="data">
+    <mat-card *ngIf="data && (matches.length > 0)">
         <img *ngIf="globals.logged && ((data.id_staff == globals.loggeduserid) || (globals.isAdmin))" style="cursor:pointer; float: right;" height="30" width="30" (click)="openDialog()" src="../../assets/icons/outline_clear_black_36dp.png" />
         <mat-card-header>
             <div mat-card-avatar class="one"></div>
@@ -40,8 +40,7 @@
                     
                 </mat-tab>
                 <mat-tab label="Knockout">
-                    <h1>Some tab content</h1>
-                    <p>...</p>
+                    <tournaments-tree [capacity]="data.capacity" [matches]="matches"></tournaments-tree>
                 </mat-tab>
                 <mat-tab label="Requests" *ngIf="globals.logged && ((data.id_staff == globals.loggeduserid) || (globals.isAdmin))">
                     <div class="row">

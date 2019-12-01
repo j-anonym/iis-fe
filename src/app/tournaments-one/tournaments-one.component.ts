@@ -22,6 +22,8 @@ export class TournamentsOneComponent implements OnInit {
   accepted = [];
   acceptedReferees= [];
 
+  matches = [];
+
   constructor(private oneService: TournamentsOneService, public dialog: MatDialog, private route: ActivatedRoute, 
               public globals: Globals) { }
 
@@ -46,6 +48,11 @@ export class TournamentsOneComponent implements OnInit {
 
       // singles
       if (this.data._singles) {
+        this.oneService.getAllPlayerMatches(this.id_tournament).subscribe(response => {
+          this.matches = JSON.parse(JSON.stringify(response));
+          console.log(this.matches);
+        })
+        
         this.oneService.getAcceptedPlayers(this.id_tournament).subscribe(response => {
           this.accepted = JSON.parse(JSON.stringify(response));
         })
@@ -54,6 +61,11 @@ export class TournamentsOneComponent implements OnInit {
         })
       // doubles
       } else {
+        this.oneService.getAllTeamMatches(this.id_tournament).subscribe(response => {
+          this.matches = JSON.parse(JSON.stringify(response));
+          console.log(this.matches);
+        })
+
         this.oneService.getAcceptedTeams(this.id_tournament).subscribe(response => {
           this.accepted = JSON.parse(JSON.stringify(response));
         })
@@ -61,7 +73,7 @@ export class TournamentsOneComponent implements OnInit {
           this.pendingTeams = JSON.parse(JSON.stringify(response));
         })
       }
-    }); 
+    });
   }
 
   openDialog() {

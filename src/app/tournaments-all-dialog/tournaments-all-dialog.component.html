@@ -40,4 +40,9 @@
         <span class="filler"></span>
         <button mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
     </div>
+    <div *ngIf="chooseDialog == 5">
+        <p>Capacity is full...</p>
+        <span class="filler"></span>
+        <button mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
+    </div>
 </div>

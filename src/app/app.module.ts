@@ -6,7 +6,7 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './test/test.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule, MatInputModule,
-         MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTableModule, MatTabsModule, MatPaginatorModule, MatExpansionModule } from '@angular/material';
+         MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTableModule, MatTabsModule, MatPaginatorModule, MatExpansionModule, MatGridListModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
 import { Globals } from './globals';
 import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -36,6 +36,8 @@ import { TeamsManageComponent } from './teams-manage/teams-manage.component';
 import { TeamsOneComponent } from './teams-one/teams-one.component';
 import { TeamsAllDialogComponent } from './teams-all-dialog/teams-all-dialog.component';
 import { TeamsOneDialogComponent } from './teams-one-dialog/teams-one-dialog.component';
+import { TournamentsTreeComponent } from './tournaments-tree/tournaments-tree.component';
+import { TournamentsTreeMatchComponent } from './tournaments-tree-match/tournaments-tree-match.component';
 
 @NgModule({
   declarations: [
@@ -62,7 +64,9 @@ import { TeamsOneDialogComponent } from './teams-one-dialog/teams-one-dialog.com
     TeamsManageComponent,
     TeamsOneComponent,
     TeamsAllDialogComponent,
-    TeamsOneDialogComponent
+    TeamsOneDialogComponent,
+    TournamentsTreeComponent,
+    TournamentsTreeMatchComponent
   ],
   imports: [
     BrowserModule,
@@ -86,7 +90,8 @@ import { TeamsOneDialogComponent } from './teams-one-dialog/teams-one-dialog.com
     MatTableModule,
     MatTabsModule,
     MatPaginatorModule,
-    MatExpansionModule
+    MatExpansionModule,
+    MatGridListModule
   ],
   entryComponents: [
     AdminPageDialogComponent,
@@ -95,7 +100,9 @@ import { TeamsOneDialogComponent } from './teams-one-dialog/teams-one-dialog.com
     TournamentsManageDialogComponent,
     TournamentsAllDialogComponent,
     TournamentsOneDialogComponent,
-    TeamsAllDialogComponent
+    TeamsAllDialogComponent,
+    TeamsOneDialogComponent,
+    TournamentsTreeMatchComponent
   ],
   providers: [
       Globals,
