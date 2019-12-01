@@ -16,25 +16,26 @@ import { TeamsCreateComponent } from './teams-create/teams-create.component';
 import { TeamsManageComponent } from './teams-manage/teams-manage.component';
 import { TeamsOneComponent } from './teams-one/teams-one.component';
 import { StatisticsComponent } from './statistics/statistics.component';
-
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'dashboard', pathMatch: 'full' },
-  { path: 'statistics', component: StatisticsComponent },
-  { path: 'dashboard', component: DashboardComponent },
-  { path: 'tournaments/all', component: TournamentsAllComponent },
-  { path: 'tournaments/create', component: TournamentsCreateComponent },
-  { path: 'tournaments/involved', component: TournamentsManageComponent },
-  { path: 'admin', component: AdminPageComponent },
-  { path: 'tournament/:id', component: TournamentsOneComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'logout', component: LogoutComponent, canActivate: [AuthGaurdService] },
-  { path: 'register', component: RegisterComponent },
-  { path: 'success', component: SuccessComponent },
-  { path: 'teams/all', component: TeamsAllComponent },
-  { path: 'teams/create', component: TeamsCreateComponent },
-  { path: 'teams/involved', component: TeamsManageComponent },
-  { path: 'team/:id', component: TeamsOneComponent }
+  {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
+  {path: 'statistics', component: StatisticsComponent},
+  {path: 'dashboard', component: DashboardComponent},
+  {path: 'tournaments/all', component: TournamentsAllComponent},
+  {path: 'tournaments/create', component: TournamentsCreateComponent},
+  {path: 'tournaments/involved', component: TournamentsManageComponent},
+  {path: 'admin', component: AdminPageComponent},
+  {path: 'tournament/:id', component: TournamentsOneComponent},
+  {path: 'login', component: LoginComponent },
+  {path: 'logout', component: LogoutComponent, canActivate: [AuthGaurdService]},
+  {path: 'register', component: RegisterComponent },
+  {path: 'success', component: SuccessComponent},
+  {path: 'teams/all', component: TeamsAllComponent},
+  {path: 'teams/create', component: TeamsCreateComponent},
+  {path: 'teams/involved', component: TeamsManageComponent},
+  {path: 'team/:id', component: TeamsOneComponent},
+  {path: 'edit', component: EditComponent}
 ];
 
 @NgModule({

@@ -37,6 +37,7 @@ import { TeamsAllDialogComponent } from './teams-all-dialog/teams-all-dialog.com
 import { TeamsOneDialogComponent } from './teams-one-dialog/teams-one-dialog.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import {MatSortModule} from '@angular/material/sort';
+import { EditComponent } from './edit/edit.component';
 
 
 @NgModule({
@@ -64,7 +65,8 @@ import {MatSortModule} from '@angular/material/sort';
     TeamsOneComponent,
     TeamsAllDialogComponent,
     TeamsOneDialogComponent,
-    StatisticsComponent
+    StatisticsComponent,
+      EditComponent
   ],
   imports: [
     BrowserModule,

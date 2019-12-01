@@ -4,7 +4,8 @@ import * as jwt_decode from 'jwt-decode';
 import {Globals} from '../globals';
 import {AccountService} from '../login/account.service';
 
-@Component({ templateUrl: 'success.component.html' })
+@Component({ templateUrl: 'success.component.html',
+    styleUrls: ['./success.component.scss']})
 export class SuccessComponent {
     tok = '';
     usrnm = '';
