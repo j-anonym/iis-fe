@@ -49,7 +49,7 @@ export class RegisterComponent implements OnInit {
                 this.router.navigate(['/login']);
             },
             error => {
-                this.error = error;
+                this.error = 'Username is already taken'
                 this.loading = false;
             });
     }
