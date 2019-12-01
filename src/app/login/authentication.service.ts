@@ -26,7 +26,7 @@ export class AuthenticationService {
 
 
     authenticate(username, password) {
-        return this.http.post<any>('http://localhost:8087/authenticate',{username,password}).pipe(
+        return this.http.post<any>('http://localhost:8080/authenticate',{username,password}).pipe(
             map(
                 userData => {
                     localStorage.setItem('current', JSON.stringify(userData));
@@ -39,7 +39,7 @@ export class AuthenticationService {
     }
 
     register(username, password, name, surname, nationality) {
-        return this.http.post<any>('http://localhost:8087/register',{username,password, name, surname, nationality});
+        return this.http.post<any>('http://localhost:8080/register',{username,password, name, surname, nationality});
     }
 
 
