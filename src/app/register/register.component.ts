@@ -29,11 +29,16 @@ export class RegisterComponent implements OnInit {
           password: ['', Validators.required],
           name: ['', Validators.required],
           surname: ['', Validators.required],
-          nationality:['', Validators.required],
+          nationality:['', Validators.required, Validators.maxLength(2), Validators.minLength(2)],
       });
   }
 
   get f() {return this.loginForm.controls;}
+
+
+  public hasError = (controlName: string, errorName: string) => {
+    return this.loginForm.controls[controlName].hasError(errorName);
+  }
 
     onSubmit() {
         this.submitted = true;

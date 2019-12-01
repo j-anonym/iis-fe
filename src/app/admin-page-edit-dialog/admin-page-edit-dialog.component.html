@@ -34,7 +34,7 @@
                     <mat-label>Nationality in Alpha-2 code</mat-label>
                     <input matInput formControlName="nationality">
                     <mat-error *ngIf="hasError('nationality', 'required')"></mat-error>
-                    <mat-error *ngIf="hasError('nationality', 'maxlength')">You have more than 2 characters</mat-error> <!-- TODO trigger na uppercase pri vkladani-->
+                    <mat-error *ngIf="hasError('nationality', 'maxlength')">You have more than 2 characters</mat-error> 
                     <mat-error *ngIf="hasError('nationality', 'minlength')">You have less than 2 characters</mat-error>
                     <span matSuffix>*</span>
                 </mat-form-field>

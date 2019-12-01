@@ -33,7 +33,7 @@
                     </div>
                 </div>
                 <div class="form-group">
-                    <label for="nationality">Nationality *</label>
+                    <label for="nationality">Nationality in Alpha-2 code *</label>
                     <input type="text" formControlName="nationality" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.nationality.errors }" />
                     <div *ngIf="submitted && f.nationality.errors" class="invalid-feedback">
                         <div *ngIf="f.nationality.errors.required">Nationality is required</div>
