@@ -16,7 +16,7 @@ import { TeamsCreateComponent } from './teams-create/teams-create.component';
 import { TeamsManageComponent } from './teams-manage/teams-manage.component';
 import { TeamsOneComponent } from './teams-one/teams-one.component';
 import { StatisticsComponent } from './statistics/statistics.component';
-
+import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: 'dashboard', pathMatch: 'full'},
@@ -34,7 +34,8 @@ const routes: Routes = [
   {path: 'teams/all', component: TeamsAllComponent},
   {path: 'teams/create', component: TeamsCreateComponent},
   {path: 'teams/involved', component: TeamsManageComponent},
-  {path: 'team/:id', component: TeamsOneComponent}
+  {path: 'team/:id', component: TeamsOneComponent},
+  {path: 'edit', component: EditComponent}
 ];
 
 @NgModule({
