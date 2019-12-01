@@ -21,22 +21,27 @@ export class TournamentsManageComponent implements OnInit {
 
   displayedColumns: string[] = ['name', 'date_from', 'date_to', 'occupation', 'place'];
 
-  constructor(private manageService: TournamentsManageService, public dialog: MatDialog, private router: Router, private globals: Globals) { }
+  constructor(
+    private manageService: TournamentsManageService,
+    public dialog: MatDialog,
+    private router: Router,
+    private globals: Globals) { }
 
   ngOnInit() {
     this.manageService.getAllTournamentsByUser(this.globals.loggeduserid).subscribe(response => {
-      let data = JSON.parse(JSON.stringify(response));
-      console.log(data)
+      const data = JSON.parse(JSON.stringify(response));
+      console.log(data);
       let date_to;
-      let date_now = moment().format("YYYY-MM-DD");
+      let date_now = moment().format('YYYY-MM-DD');
 
-      for (let record of data) {
-        date_to = moment(record.date_to).format("YYYY-MM-DD");
+      for (const record of data) {
+        date_to = moment(record.date_to).format('YYYY-MM-DD');
 
-        if (date_to < date_now)
+        if (date_to < date_now) {
           this.past.push(record);
-        else
+        } else {
           this.current.push(record);
+        }
 
       }
 
@@ -47,7 +52,7 @@ export class TournamentsManageComponent implements OnInit {
 
   getTournament(row) {
     console.log(row);
-    this.router.navigate(['/tournament/'+row.id_tournament]);
+    this.router.navigate(['/tournament/' + row.id_tournament]);
   }
 
   openDialog(): void {

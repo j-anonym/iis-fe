@@ -22,7 +22,7 @@ export class AppComponent implements OnInit {
 
 
   constructor(
-      private globals: Globals,
+      public globals: Globals,
       private router: Router,
       private authService: AuthenticationService,
       private accServis: AccountService

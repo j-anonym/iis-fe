@@ -1,6 +1,6 @@
 <div class="card-body">
     <mat-card *ngIf="data">
-        <img *ngIf="globals.logged && ((data.id_player_1 == globals.loggeduserid) || (globals.isAdmin))" style="cursor:pointer; float: right;" height="30" width="30" (click)="openDialog()" src="../../assets/icons/outline_clear_black_36dp.png" />
+        <img *ngIf="globals.logged && ((data.id_player_1 == globals.loggeduserid) || (globals.isAdmin))" style="cursor:pointer; float: right;" height="30" width="30" src="../../assets/icons/outline_clear_black_36dp.png" />
         <mat-card-header>
             <div mat-card-avatar class="one"></div>
             <mat-card-title>Team: {{data ? data.name : ""}}</mat-card-title>

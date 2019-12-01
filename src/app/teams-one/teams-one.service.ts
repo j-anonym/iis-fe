@@ -9,6 +9,6 @@ export class TeamsOneService {
   constructor(private http: HttpClient) { }
 
   getTeam(id_team) {
-    return this.http.get("http://localhost:8080/api/team/get/" + id_team);
+    return this.http.get("/api/team/get/" + id_team);
   }
 }

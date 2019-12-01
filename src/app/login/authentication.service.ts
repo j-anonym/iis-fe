@@ -15,18 +15,18 @@ export class AuthenticationService {
     public current: Observable<Account>;
 
     constructor(
-        private http:HttpClient
+        private http: HttpClient
     ) { this.currentSub = new BehaviorSubject<Account>(JSON.parse(localStorage.getItem('current')));
         this.current = this.currentSub.asObservable();
     }
 
-    public get currentVal() : Account {
+    public get currentVal(): Account {
         return this.currentSub.value;
     }
 
 
     authenticate(username, password) {
-        return this.http.post<any>('http://localhost:8080/authenticate',{username,password}).pipe(
+        return this.http.post<any>('/authenticate', {username, password}).pipe(
             map(
                 userData => {
                     localStorage.setItem('current', JSON.stringify(userData));
@@ -39,7 +39,7 @@ export class AuthenticationService {
     }
 
     register(username, password, name, surname, nationality) {
-        return this.http.post<any>('http://localhost:8080/register',{username,password, name, surname, nationality});
+        return this.http.post<any>('/register', {username, password, name, surname, nationality});
     }
 
 

@@ -10,10 +10,10 @@ export class StatisticsService {
   constructor(private http: HttpClient) { }
 
   getAllStatisticsPlayers() {
-    return this.http.get('http://localhost:8080/api/statistics/getall/players');
+    return this.http.get('/api/statistics/getall/players');
   }
 
   getAllStatisticsTeams() {
-    return this.http.get('http://localhost:8080/api/statistics/getall/teams');
+    return this.http.get('/api/statistics/getall/teams');
   }
 }
