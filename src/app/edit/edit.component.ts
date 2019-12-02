@@ -73,7 +73,7 @@ export class EditComponent implements OnInit {
         }
 
         if(this.editForm.value.is_left_handed) {
-            if(this.f.left_handed.value === 'Left') {
+            if(this.editForm.value.is_left_handed === 'Left') {
                 this.userService.updateLeftHanded(this.globals.loggeduserid, true).subscribe(
                     data => {
                     },
