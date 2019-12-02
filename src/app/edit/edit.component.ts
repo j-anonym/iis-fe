@@ -97,14 +97,14 @@ export class EditComponent implements OnInit {
 
         if(this.f.sex.value) {
             if(this.f.sex.value === 'M') {
-                this.userService.updateLeftHanded(this.globals.loggeduserid, 'M').subscribe(
+                this.userService.updateSex(this.globals.loggeduserid, 'M').subscribe(
                     data => {
                     },
                     error => {
                     });
             }
             else {
-                this.userService.updateLeftHanded(this.globals.loggeduserid, 'W').subscribe(
+                this.userService.updateSex(this.globals.loggeduserid, 'W').subscribe(
                     data => {
                     },
                     error => {
