@@ -79,7 +79,8 @@ export class TournamentsTreeComponent implements OnInit {
   }
 
   insertResult(match) {
-    if ((this.globals.loggeduserid == this.id_staff) || (this.acceptedReferees.find((element) => {return element == this.globals.loggeduserid})))
+    if ((this.globals.loggeduserid == this.id_staff) || (this.acceptedReferees.find((element) => {return element == this.globals.loggeduserid}))
+        || this.globals.isAdmin)
       this.openDialog(match);
   }
 

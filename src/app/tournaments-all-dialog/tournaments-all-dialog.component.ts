@@ -49,18 +49,29 @@ export class TournamentsAllDialogComponent implements OnInit {
         });
           
         if (!this.data.one._singles) {
-          this.allService.getAllTeamsTournament(this.data.one.id_tournament).subscribe(result => {
-            for (let record of JSON.parse(JSON.stringify(result))) {
-              // Team found and is confirmed
-              if ((record.id_team == 1) && (record._confirmed == true)) {
-                this.chooseDialog = 2;
-                break;
-              // Team found but waiting for response from staff
-              } else if ((record.id_team == 1) && (record._confirmed == false)) {
-                this.chooseDialog = 1;
-                break;
+
+          let teamsTournament = [];
+          let teamsPlayer = [];
+
+          this.allService.getAllTeamsTournament(this.data.one.id_tournament).subscribe(tournament => {
+            teamsTournament = JSON.parse(JSON.stringify(tournament));
+            this.allService.getAllTeamsPlayer(this.globals.loggeduserid).subscribe(player => {
+              teamsPlayer = JSON.parse(JSON.stringify(player));
+
+              for(let tournament of teamsTournament) {
+                for(let player of teamsPlayer) {
+                  // Team found and is confirmed
+                  if ((player.id_team == tournament.id_team) && (tournament._confirmed == true)) {
+                    this.chooseDialog = 2;
+                    break;
+                  // Team found but waiting for response from staff
+                  } else if ((player.id_team == tournament.id_team) && (tournament._confirmed == false)) {
+                    this.chooseDialog = 1;
+                    break;
+                  }
+                }
               }
-            }
+            });
           });
         }
       }

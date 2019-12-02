@@ -59,7 +59,8 @@
                     <mat-card-actions class="ml-1">
                         <button mat-raised-button type="button" (click)="close()" class="mr-4" style="float: right;">Close</button>
                         <span class="filler"></span>
-                        <button mat-raised-button color="primary" type="submit" [disabled]="!matchForm.valid">Submit</button>
+                        <button mat-raised-button color="primary" type="submit" [disabled]="!matchForm.valid || (matchForm.value.sets_home == matchForm.value.sets_away)">Submit</button>
+                        <span style="color: red;" *ngIf="(matchForm.value.sets_home == matchForm.value.sets_away)">Tie is not allowed!</span>
                     </mat-card-actions>
                 </form>
             </mat-card-content>

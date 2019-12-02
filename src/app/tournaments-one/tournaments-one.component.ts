@@ -5,6 +5,7 @@ import { TournamentsOneDialogComponent } from '../tournaments-one-dialog/tournam
 import { ActivatedRoute } from '@angular/router';
 import { Globals } from '../globals';
 import { TournamentsTreeComponent } from '../tournaments-tree/tournaments-tree.component';
+import { AdminPageService } from '../admin-page/admin-page.service';
 
 @Component({
   selector: 'app-tournaments-one',
@@ -15,6 +16,7 @@ export class TournamentsOneComponent implements OnInit {
 
   data;
   id_tournament;
+  staff_name;
 
   pendingReferees = [];
   pendingPlayers = [];
@@ -28,7 +30,7 @@ export class TournamentsOneComponent implements OnInit {
   @ViewChild(TournamentsTreeComponent, {static:false}) tree: TournamentsTreeComponent;
 
   constructor(private oneService: TournamentsOneService, public dialog: MatDialog, private route: ActivatedRoute, 
-              public globals: Globals) { }
+              public globals: Globals, private adminService: AdminPageService) { }
 
   ngOnInit() {
     this.id_tournament = this.route.snapshot.paramMap.get("id");
@@ -36,6 +38,10 @@ export class TournamentsOneComponent implements OnInit {
     // tournament informations
     this.oneService.getOneTournament(this.id_tournament).subscribe(response => {
       this.data = JSON.parse(JSON.stringify(response));
+
+      this.adminService.getUser(this.data.id_staff).subscribe(owner => {
+        this.staff_name = JSON.parse(JSON.stringify(owner));
+      })
 
       // pending referees
       this.oneService.getPendingReferees(this.id_tournament).subscribe(response => {
@@ -45,6 +51,8 @@ export class TournamentsOneComponent implements OnInit {
       this.oneService.getAcceptedReferees(this.id_tournament).subscribe(response => {
         this.acceptedReferees = JSON.parse(JSON.stringify(response));
       })
+
+      
 
       // singles
       if (this.data._singles) {
@@ -87,16 +95,18 @@ export class TournamentsOneComponent implements OnInit {
   }
 
   accept(who) {
-    if('id_user' in who) {
-      this.oneService.acceptPlayer(this.id_tournament, who.id_user).subscribe(() => {
-        this.ngOnInit();
-        this.tree.updateTree();
-      });
-    } else {
-      this.oneService.acceptTeam(this.id_tournament, who.id_team).subscribe(() => {
-        this.ngOnInit();
-        this.tree.updateTree();
-      });
+    if(!(this.data.occupation >= this.data.capacity)) {
+      if('id_user' in who) {
+        this.oneService.acceptPlayer(this.id_tournament, who.id_user).subscribe(() => {
+          this.ngOnInit();
+          this.tree.updateTree();
+        });
+      } else {
+        this.oneService.acceptTeam(this.id_tournament, who.id_team).subscribe(() => {
+          this.ngOnInit();
+          this.tree.updateTree();
+        });
+      }
     }
   }
 
