@@ -31,7 +31,6 @@ export class TournamentsTreeComponent implements OnInit {
   }
 
   openDialog(match) {
-    console.log(match);
     const dialogRef = this.dialog.open(TournamentsTreeMatchComponent, {
       disableClose: true,
       hasBackdrop: true,
