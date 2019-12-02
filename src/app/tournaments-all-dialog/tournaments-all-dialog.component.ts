@@ -4,6 +4,7 @@ import { TournamentsAllService } from '../tournaments-all/tournaments-all.servic
 import { Globals } from '../globals';
 import { TeamsAllService } from '../teams-all/teams-all.service';
 import { AdminPageService } from '../admin-page/admin-page.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-tournaments-all-dialog',
@@ -19,7 +20,7 @@ export class TournamentsAllDialogComponent implements OnInit {
 
   constructor(public dialogRef: MatDialogRef<TournamentsAllDialogComponent>, @Inject(MAT_DIALOG_DATA) public data: any, 
               private allService: TournamentsAllService, private teamService: TeamsAllService, private userService: AdminPageService,
-              public globals: Globals) { }
+              public globals: Globals, private route: Router) { }
 
   ngOnInit() {
     if (this.data.one.occupation >= this.data.one.capacity) {
@@ -69,6 +70,11 @@ export class TournamentsAllDialogComponent implements OnInit {
 
   close() {
     this.dialogRef.close();
+  }
+
+  settings() {
+    this.dialogRef.close();
+    this.route.navigate(['/edit']);
   }
 
   joinPlayer() {

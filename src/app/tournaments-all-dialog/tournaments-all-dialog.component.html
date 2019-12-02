@@ -37,6 +37,7 @@
     </div>
     <div *ngIf="chooseDialog == 4">
         <p>Gender does not match. Specify your gender in your account settings and try again!</p>
+        <button mat-raised-button (click)="settings()">Settings</button>
         <span class="filler"></span>
         <button mat-raised-button color="primary" (click)="close()" style="float: right;">Close</button>
     </div>
