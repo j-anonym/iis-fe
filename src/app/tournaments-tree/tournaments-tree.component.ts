@@ -1,6 +1,11 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material';
 import { TournamentsTreeMatchComponent } from '../tournaments-tree-match/tournaments-tree-match.component';
+import { TournamentsOneComponent } from '../tournaments-one/tournaments-one.component';
+import { updateLocale } from 'moment';
+import { TournamentsOneService } from '../tournaments-one/tournaments-one.service';
+import { single } from 'rxjs/operators';
+import { Globals } from '../globals';
 
 @Component({
   selector: 'tournaments-tree',
@@ -11,29 +16,69 @@ export class TournamentsTreeComponent implements OnInit {
 
   @Input() public capacity: number;
   @Input() public matches: any;
+  @Input() public accepted: any;
+  @Input() public acceptedReferees = [];
+  @Input() public singles: any;
 
-  divided = {1:[], 2:[], 3:[], 4:[], 5:[], 6:[]};
+  divided;
 
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private oneService: TournamentsOneService, private globals: Globals) { }
 
   ngOnInit() {
+    this.divided = {1:[], 2:[], 3:[], 4:[], 5:[], 6:[]};
     this.divideMatches()
   }
 
   openDialog(match) {
+    console.log(this.singles);
     const dialogRef = this.dialog.open(TournamentsTreeMatchComponent, {
       disableClose: true,
       hasBackdrop: true,
       width: '500px',
-      data: {one: match}
+      data: {
+        one: match,
+        accepted: this.accepted,
+        singles: this.singles
+      }
     });
 
     dialogRef.afterClosed().subscribe(() => {
+      this.updateTree();
     });
   }
 
+  updateTree() {
+    if (this.singles) {
+      this.oneService.getAllPlayerMatches(this.matches[0].id_tournament).subscribe(result => {
+        this.matches = JSON.parse(JSON.stringify(result));
+        this.ngOnInit();
+      });
+    } else {
+      this.oneService.getAllTeamMatches(this.matches[0].id_tournament).subscribe(result => {
+        this.matches = JSON.parse(JSON.stringify(result));
+        this.ngOnInit();
+      })
+    }
+  }
+
+  idToName(id) {
+    if (this.accepted.length == 0)
+      return "";
+    if ('id_user' in this.accepted[0]) {
+      for (let one of this.accepted) {
+        if(one.id_user == id)
+          return one.name+" "+one.surname;
+      }
+    } else if ('id_team' in this.accepted[0]) {
+      for (let one of this.accepted) {
+        if(one.id_team == id)
+          return one.name;
+      }
+    }
+    return "";
+  }
+
   insertResult(match) {
-    console.log(match);
     this.openDialog(match);
   }
 

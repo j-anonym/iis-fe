@@ -33,24 +33,20 @@ export class TournamentsOneComponent implements OnInit {
     // tournament informations
     this.oneService.getOneTournament(this.id_tournament).subscribe(response => {
       this.data = JSON.parse(JSON.stringify(response));
-      // console.log(this.data);
 
       // pending referees
       this.oneService.getPendingReferees(this.id_tournament).subscribe(response => {
         this.pendingReferees = JSON.parse(JSON.stringify(response));
-        // console.log(this.pendingReferees);
       })
 
       this.oneService.getAcceptedReferees(this.id_tournament).subscribe(response => {
         this.acceptedReferees = JSON.parse(JSON.stringify(response));
-        console.log(this.acceptedReferees)
       })
 
       // singles
       if (this.data._singles) {
         this.oneService.getAllPlayerMatches(this.id_tournament).subscribe(response => {
           this.matches = JSON.parse(JSON.stringify(response));
-          console.log(this.matches);
         })
         
         this.oneService.getAcceptedPlayers(this.id_tournament).subscribe(response => {
@@ -63,7 +59,6 @@ export class TournamentsOneComponent implements OnInit {
       } else {
         this.oneService.getAllTeamMatches(this.id_tournament).subscribe(response => {
           this.matches = JSON.parse(JSON.stringify(response));
-          console.log(this.matches);
         })
 
         this.oneService.getAcceptedTeams(this.id_tournament).subscribe(response => {
@@ -89,11 +84,9 @@ export class TournamentsOneComponent implements OnInit {
   }
 
   accept(who) {
-    console.log(who);
     if('id_user' in who) {
       this.oneService.acceptPlayer(this.id_tournament, who.id_user).subscribe(() => {this.ngOnInit();});
     } else {
-      console.log("tu som")
       this.oneService.acceptTeam(this.id_tournament, who.id_team).subscribe(() => {this.ngOnInit();});
     }
   }
