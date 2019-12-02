@@ -17,6 +17,7 @@ import { TeamsManageComponent } from './teams-manage/teams-manage.component';
 import { TeamsOneComponent } from './teams-one/teams-one.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { EditComponent } from './edit/edit.component';
+import { PlayersOneComponent } from "./players-one/players-one.component";
 import { SuccessEditComponent } from "./success-edit/success-edit.component";
 
 const routes: Routes = [
@@ -37,6 +38,7 @@ const routes: Routes = [
   {path: 'teams/involved', component: TeamsManageComponent},
   {path: 'team/:id', component: TeamsOneComponent},
   {path: 'edit', component: EditComponent},
+  {path: 'player/:id', component: PlayersOneComponent},
   {path: 'success/edit', component: SuccessEditComponent}
 ];
 

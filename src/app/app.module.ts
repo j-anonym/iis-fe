@@ -41,6 +41,7 @@ import { EditComponent } from './edit/edit.component';
 import { SuccessEditComponent} from "./success-edit/success-edit.component";
 import { TournamentsTreeComponent } from './tournaments-tree/tournaments-tree.component';
 import { TournamentsTreeMatchComponent } from './tournaments-tree-match/tournaments-tree-match.component';
+import { PlayersOneComponent } from "./players-one/players-one.component";
 
 @NgModule({
   declarations: [
@@ -68,6 +69,7 @@ import { TournamentsTreeMatchComponent } from './tournaments-tree-match/tourname
     TeamsAllDialogComponent,
     TeamsOneDialogComponent,
     StatisticsComponent,
+    PlayersOneComponent,
     EditComponent,
     SuccessEditComponent,
     TournamentsTreeComponent,

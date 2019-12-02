@@ -33,6 +33,10 @@ export class AdminPageService {
     return this.http.get("/api/person/get/"+id_user);
   }
   
+  getPlayer(id_stat) {
+    return this.http.get("/api/person/getplayer/"+ id_stat);
+  }
+  
   
   
 }

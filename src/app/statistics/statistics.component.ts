@@ -1,6 +1,7 @@
 import { Component, OnInit, ViewChild, AfterViewInit, ChangeDetectorRef  } from '@angular/core';
 import { StatisticsService } from './statistics.service';
 import { MatTableDataSource, MatSort } from '@angular/material';
+import { Router } from '@angular/router';
 
 export interface NStat {
   name: string;
@@ -30,7 +31,7 @@ export class StatisticsComponent implements OnInit, AfterViewInit {
 
   displayedColumns: string[] = ['name', 'won_matches', 'lost_matches', 'won_sets', 'lost_sets', 'won_games', 'lost_games'];
 
-  constructor(private statisticService: StatisticsService, private cdRef: ChangeDetectorRef) { }
+  constructor(private statisticService: StatisticsService, private cdRef: ChangeDetectorRef, private router: Router) { }
 
   ngOnInit() {
     this.statisticService.getAllStatisticsPlayers().subscribe(response => {
@@ -55,5 +56,9 @@ export class StatisticsComponent implements OnInit, AfterViewInit {
     this.playerDataSource.sort = this.sort;
     this.teamDataSource.sort = this.sBSort;
     this.cdRef.detectChanges();
+  }
+  
+  getPlayer(row) {
+    this.router.navigate(['/player/'+row.id_stat]);
   }
 }

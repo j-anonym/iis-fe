@@ -49,8 +49,9 @@ export class TournamentsCreateComponent implements OnInit {
   }
 
   submit(data) {
-    this.createService.createTournament(data).subscribe();
-    this.openDialog();
+    this.createService.createTournament(data).subscribe(() => {
+      this.openDialog();
+    });
   }
 
   openDialog(): void {
