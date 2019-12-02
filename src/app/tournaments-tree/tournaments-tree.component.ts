@@ -19,6 +19,7 @@ export class TournamentsTreeComponent implements OnInit {
   @Input() public accepted: any;
   @Input() public acceptedReferees = [];
   @Input() public singles: any;
+  @Input() public id_staff: any;
 
   divided;
 
@@ -30,7 +31,6 @@ export class TournamentsTreeComponent implements OnInit {
   }
 
   openDialog(match) {
-    console.log(this.singles);
     const dialogRef = this.dialog.open(TournamentsTreeMatchComponent, {
       disableClose: true,
       hasBackdrop: true,
@@ -79,7 +79,8 @@ export class TournamentsTreeComponent implements OnInit {
   }
 
   insertResult(match) {
-    this.openDialog(match);
+    if ((this.globals.loggeduserid == this.id_staff) || (this.acceptedReferees.find((element) => {return element == this.globals.loggeduserid})))
+      this.openDialog(match);
   }
 
   divideMatches() {

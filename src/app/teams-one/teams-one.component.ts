@@ -23,12 +23,10 @@ export class TeamsOneComponent implements OnInit {
 
     this.oneService.getTeam(this.id_team).subscribe(response => {
       this.data = JSON.parse(JSON.stringify(response));
-      console.log(this.data);
     })
 
     this.oneService.getTeamPlayers(this.id_team).subscribe(response => {
       this.players = JSON.parse(JSON.stringify(response));
-      console.log(this.players);
     })
   }
 

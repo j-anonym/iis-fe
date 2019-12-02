@@ -40,12 +40,13 @@
                     
                 </mat-tab>
                 <mat-tab label="Knockout">
-                    <tournaments-tree *ngIf="accepted && acceptedReferees" 
+                    <tournaments-tree *ngIf="accepted && acceptedReferees && data" 
                         [capacity]="data.capacity" 
                         [singles]="data._singles" 
                         [matches]="matches" 
                         [accepted]="accepted"
-                        [acceptedReferees]="acceptedReferees">
+                        [acceptedReferees]="acceptedReferees"
+                        [id_staff]="data.id_staff">
                     </tournaments-tree>
                 </mat-tab>
                 <mat-tab label="Requests" *ngIf="globals.logged && ((data.id_staff == globals.loggeduserid) || (globals.isAdmin))">

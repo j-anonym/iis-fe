@@ -39,20 +39,24 @@ export class EditComponent implements OnInit {
         const decoded = jwt_decode(this.tok);
         this.usrnm = decoded.sub;
         this.globals.loggeduser = this.usrnm;
+
         this.accService.getLoggedUserId(this.usrnm).subscribe(result => {
             this.globals.loggeduserid = JSON.parse(JSON.stringify(result));
-        });
-        this.userService.getUser(this.globals.loggeduserid).subscribe( user => {
-            this.loggedUser = JSON.parse(JSON.stringify(user));
-            this.name = this.loggedUser['name'];
-        });
-        this.editForm = new FormGroup({
-            name: new FormControl('', [ Validators.maxLength(128), Validators.required ]),
-            surname: new FormControl('', [ Validators.maxLength(128), Validators.required ]),
-            birth: new FormControl(this.currentDate),
-            nationality: new FormControl('', [ Validators.maxLength(2), Validators.minLength(2), Validators.required ]),
-            sex: new FormControl(''),
-            is_left_handed: new FormControl(''),
+
+            this.userService.getUser(this.globals.loggeduserid).subscribe( user => {
+                this.loggedUser = JSON.parse(JSON.stringify(user));
+
+                this.editForm = new FormGroup({
+                    id_user: new FormControl(this.loggedUser.id_user),
+                    name: new FormControl(this.loggedUser.name, [Validators.required]),
+                    surname: new FormControl(this.loggedUser.surname, [Validators.required]),
+                    birth: new FormControl(this.loggedUser.birth ? new Date(this.loggedUser.birth) : null, []),
+                    sex: new FormControl(this.loggedUser.sex, []),
+                    nationality: new FormControl(this.loggedUser.nationality, [Validators.required, Validators.minLength(2), Validators.maxLength(2)]),
+                    is_admin: new FormControl(this.loggedUser.is_admin),
+                    is_left_handed: new FormControl(this.loggedUser.is_left_handed, [])
+                })
+            })
         });
     }
 
@@ -60,70 +64,10 @@ export class EditComponent implements OnInit {
         return this.editForm.controls[controlName].hasError(errorName);
     }
 
-    onSubmit() {
-
-        if(this.editForm.value.birth) {
-            this.userService.updateBirth(this.globals.loggeduserid, this.editForm.value.birth).subscribe(
-                data => {
-                },
-                error => {
-                    this.error = 'Date is not valid'
-                    this.loading = false;
-                });
-        }
-
-        if(this.editForm.value.is_left_handed) {
-            if(this.editForm.value.is_left_handed === 'Left') {
-                this.userService.updateLeftHanded(this.globals.loggeduserid, true).subscribe(
-                    data => {
-                    },
-                    error => {
-                    });
-            }
-            else {
-                this.userService.updateLeftHanded(this.globals.loggeduserid, false).subscribe(
-                    data => {
-                    },
-                    error => {
-                    });
-            }
-        }
-
-        if(this.editForm.value.sex) {
-            if(this.editForm.value.sex === 'M') {
-                this.userService.updateSex(this.globals.loggeduserid, 'M').subscribe(
-                    data => {
-                    },
-                    error => {
-                    });
-            }
-            else {
-                this.userService.updateSex(this.globals.loggeduserid, 'W').subscribe(
-                    data => {
-                    },
-                    error => {
-                    });
-            }
-        }
-
-        this.userService.updateName(this.globals.loggeduserid, this.editForm.value.name).subscribe(
-            data => {
-            },
-            error => {
-            });
-        this.userService.updateSurname(this.globals.loggeduserid, this.editForm.value.surname).subscribe(
-            data => {
-            },
-            error => {
-            });
-        this.userService.updateNationality(this.globals.loggeduserid, this.editForm.value.nationality).subscribe(
-            data => {
-                this.router.navigate(['/success/edit']);
-            },
-            error => {
-            });
-
-
+    submit(body) {
+        this.userService.updateUserWait(body).subscribe(() => {
+            this.router.navigate(['/success/edit']);
+        })
     }
-
 }
+

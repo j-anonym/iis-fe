@@ -49,7 +49,6 @@ export class TournamentsAllDialogComponent implements OnInit {
           
         if (!this.data.one._singles) {
           this.allService.getAllTeamsTournament(this.data.one.id_tournament).subscribe(result => {
-            console.log(result);
             for (let record of JSON.parse(JSON.stringify(result))) {
               // Team found and is confirmed
               if ((record.id_team == 1) && (record._confirmed == true)) {
@@ -86,7 +85,6 @@ export class TournamentsAllDialogComponent implements OnInit {
 
   joinTeamChosen() {
     if (this.chosenTeam != null) {
-      console.log(this.data.one.id_tournament)
       this.allService.joinTeam(this.data.one.id_tournament, this.chosenTeam).subscribe(() => {
         this.dialogRef.close();
       });

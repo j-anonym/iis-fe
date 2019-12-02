@@ -66,7 +66,6 @@ export class TournamentsCreateComponent implements OnInit {
     dialogRef.afterClosed().subscribe(() => {
       this.createService.getLastCreatedTournament(this.globals.loggeduserid).subscribe(result => {
         id_created = result;
-        console.log(id_created);
         this.router.navigate(['tournament', id_created]);
       });
       

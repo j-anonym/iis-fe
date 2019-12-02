@@ -30,7 +30,6 @@ export class TournamentsManageComponent implements OnInit {
   ngOnInit() {
     this.manageService.getAllTournamentsByUser(this.globals.loggeduserid).subscribe(response => {
       const data = JSON.parse(JSON.stringify(response));
-      console.log(data);
       let date_to;
       let date_now = moment().format('YYYY-MM-DD');
 
@@ -51,7 +50,6 @@ export class TournamentsManageComponent implements OnInit {
   }
 
   getTournament(row) {
-    console.log(row);
     this.router.navigate(['/tournament/' + row.id_tournament]);
   }
 
