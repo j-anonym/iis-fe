@@ -1,0 +1,73 @@
+<div mat-dialog-content>
+    <h1>Match update</h1>
+</div>
+<div mat-dialog-actions>
+    <div *ngIf="chooseDialog == 1">
+        <p>WARNING! You are not allowed to change this match after result is set!</p>
+        <mat-card>
+            <mat-card-content>
+                <form class="match-form" [formGroup]="matchForm" (ngSubmit)="submit(matchForm.value)" autocomplete="off">
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Participant Home</mat-label>
+                        <mat-select formControlName="id_home">
+                            <mat-option *ngFor="let participant of this.data.accepted" [value]="participant.id_user ? participant.id_user : participant.id_team">
+                                {{participant.id_user ? participant.name+" "+participant.surname : participant.name}}
+                            </mat-option>
+                        </mat-select>
+                        <span matSuffix>*</span>
+                        <mat-error *ngIf="hasError('id_home', 'required')">Required field!</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Participant Away</mat-label>
+                        <mat-select formControlName="id_away">
+                            <mat-option *ngFor="let participant of this.data.accepted" [value]="participant.id_user ? participant.id_user : participant.id_team">
+                                {{participant.id_user ? participant.name+" "+participant.surname : participant.name}}
+                            </mat-option>
+                        </mat-select>
+                        <span matSuffix>*</span>
+                        <mat-error *ngIf="hasError('id_away', 'required')">Required field!</mat-error>
+                    </mat-form-field>
+
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Sets Home</mat-label>
+                        <input type="number" matInput formControlName="sets_home">
+                        <span matSuffix>*</span>
+                        <mat-error *ngIf="hasError('sets_home', 'required')">Required field!</mat-error>
+                        <mat-error *ngIf="hasError('sets_home', 'min')">Minimum value is 0</mat-error>
+                        <mat-error *ngIf="hasError('sets_home', 'max')">Maximum value is 5</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Sets Away</mat-label>
+                        <input type="number" matInput formControlName="sets_away">
+                        <span matSuffix>*</span>
+                        <mat-error *ngIf="hasError('sets_away', 'required')">Required field!</mat-error>
+                        <mat-error *ngIf="hasError('sets_home', 'min')">Minimum value is 0</mat-error>
+                        <mat-error *ngIf="hasError('sets_home', 'max')">Maximum value is 5</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Games Home</mat-label>
+                        <input type="number" matInput formControlName="games_home">
+                        <span matSuffix>*</span>
+                        <mat-error *ngIf="hasError('games_home', 'required')">Required field!</mat-error>
+                    </mat-form-field>
+                    <mat-form-field class="example-full-width">
+                        <mat-label>Games Away</mat-label>
+                        <input type="number" matInput formControlName="games_away">
+                        <span matSuffix>*</span>
+                        <mat-error *ngIf="hasError('games_away', 'required')">Required field!</mat-error>
+                    </mat-form-field>
+                    <mat-card-actions class="ml-1">
+                        <button mat-raised-button type="button" (click)="close()" class="mr-4" style="float: right;">Close</button>
+                        <span class="filler"></span>
+                        <button mat-raised-button color="primary" type="submit" [disabled]="!matchForm.valid">Submit</button>
+                    </mat-card-actions>
+                </form>
+            </mat-card-content>
+        </mat-card>
+        
+    </div>
+    <div *ngIf="chooseDialog == 2">
+        <p>Result already submitted!</p>
+        <button mat-raised-button (click)="close()" style="float: right;">Close</button>
+    </div>
+</div>

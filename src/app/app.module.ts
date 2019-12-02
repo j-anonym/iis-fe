@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule, MatInputModule,
          MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTableModule, MatTabsModule,
-         MatPaginatorModule, MatExpansionModule } from '@angular/material';
+         MatPaginatorModule, MatExpansionModule, MatGridListModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
 import { Globals } from './globals';
 import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -39,7 +39,8 @@ import { StatisticsComponent } from './statistics/statistics.component';
 import { MatSortModule } from '@angular/material/sort';
 import { EditComponent } from './edit/edit.component';
 import { SuccessEditComponent} from "./success-edit/success-edit.component";
-
+import { TournamentsTreeComponent } from './tournaments-tree/tournaments-tree.component';
+import { TournamentsTreeMatchComponent } from './tournaments-tree-match/tournaments-tree-match.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,9 @@ import { SuccessEditComponent} from "./success-edit/success-edit.component";
     TeamsOneDialogComponent,
     StatisticsComponent,
     EditComponent,
-    SuccessEditComponent
+    SuccessEditComponent,
+    TournamentsTreeComponent,
+    TournamentsTreeMatchComponent
   ],
   imports: [
     BrowserModule,
@@ -93,7 +96,8 @@ import { SuccessEditComponent} from "./success-edit/success-edit.component";
     MatTabsModule,
     MatPaginatorModule,
     MatExpansionModule,
-    MatSortModule
+    MatSortModule,
+    MatGridListModule
   ],
   entryComponents: [
     AdminPageDialogComponent,
@@ -102,7 +106,9 @@ import { SuccessEditComponent} from "./success-edit/success-edit.component";
     TournamentsManageDialogComponent,
     TournamentsAllDialogComponent,
     TournamentsOneDialogComponent,
-    TeamsAllDialogComponent
+    TeamsAllDialogComponent,
+    TeamsOneDialogComponent,
+    TournamentsTreeMatchComponent
   ],
   providers: [
       Globals,

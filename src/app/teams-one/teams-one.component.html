@@ -17,9 +17,9 @@
                             </mat-list>
                         </div>
                         <div class="col-sm">
-                            <mat-list *ngIf="data">
-                                <mat-list-item ><b>Player 1:</b>{{data.id_player_1 ? data.id_player_1 : "&lt;Free&gt;"}}</mat-list-item>
-                                <mat-list-item ><b>Player 2:</b>{{data.id_player_2 ? data.id_player_2 : "&lt;Free&gt;"}}</mat-list-item>
+                            <mat-list *ngIf="data && players">
+                                <mat-list-item *ngFor="let player of players" ><b>Player:</b>{{player.name}} {{player.surname}}</mat-list-item>
+                                <mat-list-item *ngIf="players.length == 1" ><b>Player:</b>&lt;Free&gt;</mat-list-item>
                             </mat-list>
                         </div>
                     </div>

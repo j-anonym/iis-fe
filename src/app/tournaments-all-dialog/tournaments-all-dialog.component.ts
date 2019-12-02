@@ -22,6 +22,10 @@ export class TournamentsAllDialogComponent implements OnInit {
               public globals: Globals) { }
 
   ngOnInit() {
+    if (this.data.one.occupation >= this.data.one.capacity) {
+      this.chooseDialog = 5;
+      return;
+    }
     this.userService.getUser(this.globals.loggeduserid).subscribe(user => {
       if ((user['sex'] != this.data.one.type) || (user['sex'] == null)) {
         this.chooseDialog = 4;
@@ -47,7 +51,6 @@ export class TournamentsAllDialogComponent implements OnInit {
           this.allService.getAllTeamsTournament(this.data.one.id_tournament).subscribe(result => {
             console.log(result);
             for (let record of JSON.parse(JSON.stringify(result))) {
-              // STATICKA HODNOTA ID_PLAYER TODO
               // Team found and is confirmed
               if ((record.id_team == 1) && (record._confirmed == true)) {
                 this.chooseDialog = 2;

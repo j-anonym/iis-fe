@@ -1,0 +1,19 @@
+mat-grid-tile {
+    background-color: #f0f7fb;
+    border: solid 0.5px #3498db;
+    border-left: solid 4px #3498db;
+    line-height: 18px;
+    overflow: hidden;
+    padding: 12px;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.row {
+    width: 99%;
+}
+
+div.col-sm {
+    margin-top: auto;
+    margin-bottom: auto;
+}
