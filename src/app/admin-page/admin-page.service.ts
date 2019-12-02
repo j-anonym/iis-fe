@@ -17,17 +17,22 @@ export class AdminPageService {
 
   deleteUser(id_user) {
     this.http.delete('/api/person/delete/' + id_user).subscribe(response => {
-      console.log(response);
     });
   }
 
   updateUser(data) {
     this.http.post('/api/person/update', data).subscribe(response => {
-      console.log(response);
     });
+  }
+
+  updateUserWait(data) {
+    return this.http.post('/api/person/update', data)
   }
 
   getUser(id_user) {
     return this.http.get("/api/person/get/"+id_user);
   }
+  
+  
+  
 }

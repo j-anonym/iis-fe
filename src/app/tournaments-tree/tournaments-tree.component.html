@@ -1,0 +1,304 @@
+<div class="card-body">
+    <div *ngIf="capacity == 2"> <!-- 2 -->
+        <div class="row">
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[1]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="capacity == 4"> <!-- 4 -->
+        <div class="row">
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[1]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[2]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="capacity == 8"> <!-- 8 -->
+        <div class="row">
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[1]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[2]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[3]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="capacity == 16"> <!-- 16 -->
+        <div class="row">
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[1]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[2]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[3]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[4]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="capacity == 32"> <!-- 32 -->
+        <div class="row">
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[1]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[2]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[3]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[4]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[5]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+    </div>
+
+    <div *ngIf="capacity == 64"> <!-- 64 -->
+        <div class="row">
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[1]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[2]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[3]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[4]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[5]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+            <div class="col-sm">
+                <mat-grid-list cols="1" rowHeight="40px" rowWidth="40px">
+                    <mat-grid-tile *ngFor="let match of divided[6]" (click)="insertResult(match)">
+                        <div class="row">
+                            <div class="col-9">{{idToName(match.id_user_home ? match.id_user_home : match.id_team_home)}}</div>
+                            <div class="col-3">{{match.sets_home}}</div>
+                            <div class="w-100"></div>
+                            <div class="col-9">{{idToName(match.id_user_away ? match.id_user_away : match.id_team_away)}}</div>
+                            <div class="col-3">{{match.sets_away}}</div>
+                        </div>
+                    </mat-grid-tile>
+                </mat-grid-list>
+            </div>
+        </div>
+    </div>
+</div>

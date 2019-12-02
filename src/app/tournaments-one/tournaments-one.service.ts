@@ -55,4 +55,20 @@ export class TournamentsOneService {
   declineTeam(id_tournament, id_team) {
     return this.http.delete('/api/tournament/team/decline/' + id_tournament + '/' + id_team);
   }
+
+  getAllPlayerMatches(id_tournament) {
+    return this.http.get("/api/tournament/getplayermatches/"+id_tournament);
+  }
+
+  getAllTeamMatches(id_tournament) {
+    return this.http.get("/api/tournament/getteammatches/"+id_tournament);
+  }
+
+  updatePlayerMatch(body) {
+    return this.http.post("/api/tournament/update/player/match", body);
+  }
+
+  updateTeamMatch(body) {
+    return this.http.post("/api/tournament/update/team/match", body);
+  }
 }

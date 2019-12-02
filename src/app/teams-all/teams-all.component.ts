@@ -38,7 +38,6 @@ export class TeamsAllComponent implements OnInit {
   }
 
   getTeam(row) {
-    console.log(row);
     this.router.navigate(['/team', row.id_team]);
   }
 

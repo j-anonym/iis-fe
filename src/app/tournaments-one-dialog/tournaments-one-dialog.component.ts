@@ -20,12 +20,10 @@ export class TournamentsOneDialogComponent implements OnInit {
   }
 
   delete() {
-    // console.log(this.data.one.id_tournament);
     this.oneService.deleteTournament(this.data.one.id_tournament).subscribe(() => {
-
+      this.dialogRef.close();
+      this.router.navigate(['tournaments/all']);
     });
-    this.dialogRef.close();
-    this.router.navigate(['tournaments/all']);
   }
 
 }

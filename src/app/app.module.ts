@@ -5,7 +5,7 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule, MatIconModule, MatSidenavModule, MatListModule, MatButtonModule, MatCardModule, MatInputModule,
          MatDatepickerModule, MatNativeDateModule, MatSelectModule, MAT_DIALOG_DEFAULT_OPTIONS, MatTableModule, MatTabsModule,
-         MatPaginatorModule, MatExpansionModule } from '@angular/material';
+         MatPaginatorModule, MatExpansionModule, MatGridListModule } from '@angular/material';
 import { MatMenuModule } from '@angular/material/menu';
 import { Globals } from './globals';
 import { HttpClientModule , HTTP_INTERCEPTORS} from '@angular/common/http';
@@ -24,8 +24,8 @@ import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.
 import { TournamentsManageDialogComponent } from './tournaments-manage-dialog/tournaments-manage-dialog.component';
 import { TournamentsOneComponent } from './tournaments-one/tournaments-one.component';
 import { LogoutComponent } from './logout/logout.component';
-import {BasicAuthHtppInterceptorService} from './login/auth-http.service';
-import {ErrorInterceptor} from './logout/error.intercept';
+import { BasicAuthHtppInterceptorService } from './login/auth-http.service';
+import { ErrorInterceptor } from './logout/error.intercept';
 import { AdminPageEditDialogComponent } from './admin-page-edit-dialog/admin-page-edit-dialog.component';
 import { TournamentsAllDialogComponent } from './tournaments-all-dialog/tournaments-all-dialog.component';
 import { TournamentsOneDialogComponent } from './tournaments-one-dialog/tournaments-one-dialog.component';
@@ -36,9 +36,11 @@ import { TeamsOneComponent } from './teams-one/teams-one.component';
 import { TeamsAllDialogComponent } from './teams-all-dialog/teams-all-dialog.component';
 import { TeamsOneDialogComponent } from './teams-one-dialog/teams-one-dialog.component';
 import { StatisticsComponent } from './statistics/statistics.component';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
 import { EditComponent } from './edit/edit.component';
-
+import { SuccessEditComponent} from "./success-edit/success-edit.component";
+import { TournamentsTreeComponent } from './tournaments-tree/tournaments-tree.component';
+import { TournamentsTreeMatchComponent } from './tournaments-tree-match/tournaments-tree-match.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +68,10 @@ import { EditComponent } from './edit/edit.component';
     TeamsAllDialogComponent,
     TeamsOneDialogComponent,
     StatisticsComponent,
-      EditComponent
+    EditComponent,
+    SuccessEditComponent,
+    TournamentsTreeComponent,
+    TournamentsTreeMatchComponent
   ],
   imports: [
     BrowserModule,
@@ -91,7 +96,8 @@ import { EditComponent } from './edit/edit.component';
     MatTabsModule,
     MatPaginatorModule,
     MatExpansionModule,
-    MatSortModule
+    MatSortModule,
+    MatGridListModule
   ],
   entryComponents: [
     AdminPageDialogComponent,
@@ -100,7 +106,9 @@ import { EditComponent } from './edit/edit.component';
     TournamentsManageDialogComponent,
     TournamentsAllDialogComponent,
     TournamentsOneDialogComponent,
-    TeamsAllDialogComponent
+    TeamsAllDialogComponent,
+    TeamsOneDialogComponent,
+    TournamentsTreeMatchComponent
   ],
   providers: [
       Globals,

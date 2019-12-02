@@ -70,7 +70,6 @@ export class TournamentsAllComponent implements OnInit {
   } 
 
   getTournament(id) {
-    console.log(id);
     this.router.navigate(['/tournament', id]);
   }
 
