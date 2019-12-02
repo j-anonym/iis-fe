@@ -1,62 +1,58 @@
-<div class="col-md-5 offset-md-1 mt-3">
-    <div class="card">
-        <h4 class="card-header">Edit Profile</h4>
-        <h5 class="card">   * Indicates required field</h5>
-        <div class="card-body">
-            <form [formGroup]="editForm" (ngSubmit)="onSubmit()">
-                <div class="form-group">
-                    <label for="name">Name *</label>
-                    <input type="text" class="form-control" formControlName="name" placeholder="Your name" [ngClass]="{ 'is-invalid': submitted && f.name.errors }">
-                    <div *ngIf="submitted && f.name.errors" class="invalid-feedback">
-                        <div *ngIf="f.name.errors.required">Name is required</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="surname">Surname *</label>
-                    <input type="text" class="form-control" formControlName="surname" placeholder="Your surname" [ngClass]="{ 'is-invalid': submitted && f.surname.errors }">
-                    <div *ngIf="submitted && f.surname.errors" class="invalid-feedback">
-                        <div *ngIf="f.surname.errors.required">Surname is required</div>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label for="nationality">Nationality in Alpha-2 code *</label>
-                    <input type="text" class="form-control" formControlName="nationality" placeholder="Your nationality" [ngClass]="{ 'is-invalid': submitted && f.nationality.errors }">
-                    <div *ngIf="submitted && f.nationality.errors" class="invalid-feedback">
-                        <div *ngIf="f.nationality.errors.required">Nationality is required</div>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="birth" class="col-2 col-form-label">Birth</label>
-                    <div class="col-3">
-                        <input class="form-control" type="date" formControlName="birth" placeholder="2019-01-01">
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="sex" class=" col-2 col-form-label">Sex </label>
-                    <div class="col-md-2">
-                        <select class="form-control" formControlName="sex">
-                            <option disabled="" selected="">Choose</option>
-                            <option>M</option>
-                            <option>F</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="form-group row">
-                    <label for="left_handed" class=" col-3 col-form-label">Is your primary hand left? </label>
-                    <div class="col-md-2">
-                        <select class="form-control" formControlName="left_handed">
-                            <option disabled="" selected="">Choose</option>
-                            <option>Yes</option>
-                            <option>No</option>
-                        </select>
-                    </div>
-                </div>
-                <button [disabled]="loading" class="btn btn-primary">
-                    <span *ngIf="loading" class="spinner-border spinner-border-sm mr-1"></span>
-                    Save
-                </button>
-                <div *ngIf="error" class="alert alert-danger mt-3 mb-0">{{error}}</div>
+<div class="card-body">
+    <mat-card>
+        <mat-card-header>
+            <div mat-card-avatar class="example-header-image"></div>
+            <mat-card-title>Edit Profile</mat-card-title>
+            <mat-card-subtitle>* Indicates required field</mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+            <form class="edit-form" [formGroup]="editForm" (ngSubmit)="onSubmit()" autocomplete="off">
+                <mat-form-field class="example-full-width">
+                    <mat-label>Name</mat-label>
+                    <input matInput formControlName="name" >
+                    <mat-error *ngIf="hasError('name', 'required')"></mat-error>
+                    <mat-error *ngIf="hasError('name', 'maxlength')">You have more than 128 characters</mat-error>
+                    <span matSuffix>*</span>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Surname</mat-label>
+                    <input matInput formControlName="surname" >
+                    <mat-error *ngIf="hasError('surname', 'required')"></mat-error>
+                    <mat-error *ngIf="hasError('surname', 'maxlength')">You have more than 128 characters</mat-error>
+                    <span matSuffix>*</span>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Choose birth date</mat-label>
+                    <input matInput [max]="currentDate" [matDatepicker]="pickerTo" formControlName="birth" >
+                    <mat-datepicker-toggle matSuffix [for]="pickerTo"></mat-datepicker-toggle>
+                    <mat-datepicker #pickerTo></mat-datepicker>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Nationality in Alpha-2 code</mat-label>
+                    <input matInput formControlName="nationality">
+                    <mat-error *ngIf="hasError('nationality', 'required')"></mat-error>
+                    <mat-error *ngIf="hasError('nationality', 'maxlength')">You have more than 2 characters</mat-error> <!-- TODO trigger na uppercase pri vkladani-->
+                    <mat-error *ngIf="hasError('nationality', 'minlength')">You have less than 2 characters</mat-error>
+                    <span matSuffix>*</span>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Sex</mat-label>
+                    <mat-select formControlName="sex">
+                        <mat-option value="M">Man</mat-option>
+                        <mat-option value="W">Woman</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field class="example-full-width">
+                    <mat-label>Primary hand:</mat-label>
+                    <mat-select formControlName="is_left_handed">
+                        <mat-option [value]="true">Left</mat-option>
+                        <mat-option [value]="false">Right</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-card-actions >
+                    <button mat-raised-button type="submit" color="primary" [disabled]="!editForm.valid">Save</button>
+                </mat-card-actions>
             </form>
-        </div>
-    </div>
+        </mat-card-content>
+    </mat-card>
 </div>

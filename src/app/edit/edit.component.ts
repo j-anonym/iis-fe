@@ -1,12 +1,12 @@
-import { Component, OnInit, Inject } from '@angular/core';
-import {FormGroup, FormControl, Validators, FormBuilder} from '@angular/forms';
+import { Component, OnInit} from '@angular/core';
+import {FormGroup, Validators, FormBuilder, FormControl} from '@angular/forms';
 import {Globals} from "../globals";
 import * as jwt_decode from 'jwt-decode';
 import { AdminPageService } from '../admin-page/admin-page.service';
 import {AuthenticationService} from "../login/authentication.service";
 import {AccountService} from "../login/account.service";
 import {ActivatedRoute, Router} from "@angular/router";
-import {first} from "rxjs/operators";
+import * as moment from "moment";
 
 @Component({
     selector: 'app-edit',
@@ -23,6 +23,7 @@ export class EditComponent implements OnInit {
     usrnm = '';
     name = '';
     loggedUser;
+    currentDate: Date;
 
     constructor(private router: Router,
                 private formBuilder: FormBuilder,
@@ -34,42 +35,35 @@ export class EditComponent implements OnInit {
 
 
     ngOnInit() {
+        this.currentDate = moment().toDate();
         const decoded = jwt_decode(this.tok);
         this.usrnm = decoded.sub;
         this.globals.loggeduser = this.usrnm;
         this.accService.getLoggedUserId(this.usrnm).subscribe(result => {
             this.globals.loggeduserid = JSON.parse(JSON.stringify(result));
-            console.log(this.globals.loggeduserid);
         });
         this.userService.getUser(this.globals.loggeduserid).subscribe( user => {
             this.loggedUser = JSON.parse(JSON.stringify(user));
             this.name = this.loggedUser['name'];
-            console.log(this.name);
-        })
-        console.log(this.name);
-        this.editForm = this.formBuilder.group({
-            name: ['', Validators.required],
-            surname: ['', Validators.required],
-            nationality:['', Validators.required],
-            birth:[''],
-            sex:[''],
-            left_handed:['']
+        });
+        this.editForm = new FormGroup({
+            name: new FormControl('', [ Validators.maxLength(128), Validators.required ]),
+            surname: new FormControl('', [ Validators.maxLength(128), Validators.required ]),
+            birth: new FormControl(this.currentDate),
+            nationality: new FormControl('', [ Validators.maxLength(2), Validators.minLength(2), Validators.required ]),
+            sex: new FormControl(''),
+            is_left_handed: new FormControl(''),
         });
     }
 
-    get f() {return this.editForm.controls;}
+    public hasError = (controlName: string, errorName: string) => {
+        return this.editForm.controls[controlName].hasError(errorName);
+    }
 
     onSubmit() {
-        this.submitted = true;
 
-        if (this.editForm.invalid) {
-            return;
-        }
-
-        this.loading = true;
-
-        if(this.f.birth.value) {
-            this.userService.updateBirth(this.globals.loggeduserid, this.f.birth.value).subscribe(
+        if(this.editForm.value.birth) {
+            this.userService.updateBirth(this.globals.loggeduserid, this.editForm.value.birth).subscribe(
                 data => {
                 },
                 error => {
@@ -78,8 +72,8 @@ export class EditComponent implements OnInit {
                 });
         }
 
-        if(this.f.left_handed.value) {
-            if(this.f.left_handed.value === 'Yes') {
+        if(this.editForm.value.is_left_handed) {
+            if(this.f.left_handed.value === 'Left') {
                 this.userService.updateLeftHanded(this.globals.loggeduserid, true).subscribe(
                     data => {
                     },
@@ -95,7 +89,7 @@ export class EditComponent implements OnInit {
             }
         }
 
-        if(this.f.sex.value) {
+        if(this.editForm.value.sex) {
             if(this.f.sex.value === 'M') {
                 this.userService.updateSex(this.globals.loggeduserid, 'M').subscribe(
                     data => {
@@ -112,22 +106,23 @@ export class EditComponent implements OnInit {
             }
         }
 
-        this.userService.updateName(this.globals.loggeduserid, this.f.name.value).subscribe(
+        this.userService.updateName(this.globals.loggeduserid, this.editForm.value.name).subscribe(
             data => {
             },
             error => {
             });
-        this.userService.updateSurname(this.globals.loggeduserid, this.f.surname.value).subscribe(
+        this.userService.updateSurname(this.globals.loggeduserid, this.editForm.value.surname).subscribe(
             data => {
             },
             error => {
             });
-        this.userService.updateNationality(this.globals.loggeduserid, this.f.nationality.value).subscribe(
+        this.userService.updateNationality(this.globals.loggeduserid, this.editForm.value.nationality).subscribe(
             data => {
                 this.router.navigate(['/success/edit']);
             },
             error => {
             });
+
 
     }
 
