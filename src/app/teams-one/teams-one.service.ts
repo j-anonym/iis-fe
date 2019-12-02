@@ -13,10 +13,10 @@ export class TeamsOneService {
   }
 
   getTeamPlayers(id_team) {
-    return this.http.get("http://localhost:8080/api/team/get/players/" + id_team)
+    return this.http.get("/api/team/get/players/" + id_team)
   }
 
   deleteTeam(id_team) {
-    return this.http.delete("http://localhost:8080/api/team/delete/" + id_team);
+    return this.http.delete("/api/team/delete/" + id_team);
   }
 }
