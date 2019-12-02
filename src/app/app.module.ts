@@ -24,8 +24,8 @@ import { AdminPageDialogComponent } from './admin-page-dialog/admin-page-dialog.
 import { TournamentsManageDialogComponent } from './tournaments-manage-dialog/tournaments-manage-dialog.component';
 import { TournamentsOneComponent } from './tournaments-one/tournaments-one.component';
 import { LogoutComponent } from './logout/logout.component';
-import {BasicAuthHtppInterceptorService} from './login/auth-http.service';
-import {ErrorInterceptor} from './logout/error.intercept';
+import { BasicAuthHtppInterceptorService } from './login/auth-http.service';
+import { ErrorInterceptor } from './logout/error.intercept';
 import { AdminPageEditDialogComponent } from './admin-page-edit-dialog/admin-page-edit-dialog.component';
 import { TournamentsAllDialogComponent } from './tournaments-all-dialog/tournaments-all-dialog.component';
 import { TournamentsOneDialogComponent } from './tournaments-one-dialog/tournaments-one-dialog.component';
@@ -36,8 +36,9 @@ import { TeamsOneComponent } from './teams-one/teams-one.component';
 import { TeamsAllDialogComponent } from './teams-all-dialog/teams-all-dialog.component';
 import { TeamsOneDialogComponent } from './teams-one-dialog/teams-one-dialog.component';
 import { StatisticsComponent } from './statistics/statistics.component';
-import {MatSortModule} from '@angular/material/sort';
+import { MatSortModule } from '@angular/material/sort';
 import { EditComponent } from './edit/edit.component';
+import { SuccessEditComponent} from "./success-edit/success-edit.component";
 
 
 @NgModule({
@@ -66,7 +67,8 @@ import { EditComponent } from './edit/edit.component';
     TeamsAllDialogComponent,
     TeamsOneDialogComponent,
     StatisticsComponent,
-      EditComponent
+    EditComponent,
+    SuccessEditComponent
   ],
   imports: [
     BrowserModule,
