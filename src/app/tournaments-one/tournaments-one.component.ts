@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { TournamentsOneService } from './tournaments-one.service';
 import { MatDialog } from '@angular/material';
 import { TournamentsOneDialogComponent } from '../tournaments-one-dialog/tournaments-one-dialog.component';
 import { ActivatedRoute } from '@angular/router';
 import { Globals } from '../globals';
+import { TournamentsTreeComponent } from '../tournaments-tree/tournaments-tree.component';
 
 @Component({
   selector: 'app-tournaments-one',
@@ -23,6 +24,8 @@ export class TournamentsOneComponent implements OnInit {
   acceptedReferees= [];
 
   matches = [];
+
+  @ViewChild(TournamentsTreeComponent, {static:false}) tree: TournamentsTreeComponent;
 
   constructor(private oneService: TournamentsOneService, public dialog: MatDialog, private route: ActivatedRoute, 
               public globals: Globals) { }
@@ -85,9 +88,15 @@ export class TournamentsOneComponent implements OnInit {
 
   accept(who) {
     if('id_user' in who) {
-      this.oneService.acceptPlayer(this.id_tournament, who.id_user).subscribe(() => {this.ngOnInit();});
+      this.oneService.acceptPlayer(this.id_tournament, who.id_user).subscribe(() => {
+        this.ngOnInit();
+        this.tree.updateTree();
+      });
     } else {
-      this.oneService.acceptTeam(this.id_tournament, who.id_team).subscribe(() => {this.ngOnInit();});
+      this.oneService.acceptTeam(this.id_tournament, who.id_team).subscribe(() => {
+        this.ngOnInit();
+        this.tree.updateTree();
+      });
     }
   }
 

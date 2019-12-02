@@ -33,7 +33,7 @@
                     </mat-select>
                 </mat-form-field>
                 <mat-form-field class="example-full-width">
-                    <mat-label>Nationality</mat-label>
+                    <mat-label>Nationality in Alpha-2 Code</mat-label>
                     <input matInput formControlName="nationality">
                     <mat-error *ngIf="hasError('nationality', 'required')"></mat-error>
                     <mat-error *ngIf="hasError('nationality', 'minLength')">Required length is exactly 2</mat-error>

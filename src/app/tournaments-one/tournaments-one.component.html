@@ -55,7 +55,7 @@
                             <mat-list *ngIf="data">
                                 <mat-list-item><b>Attendants:</b></mat-list-item>
                                 <mat-list-item *ngFor="let player of pendingPlayers">
-                                    <span class="mr-2">{{player.name}} {{player.usrname}}</span>
+                                    <span class="mr-2">{{player.name}} {{player.surname}}</span>
                                     <button class="mr-2" mat-raised-button color="primary" (click)="accept(player)">Accept</button>
                                     <button mat-raised-button color="warn" (click)="decline(player)">Decline</button>
                                 </mat-list-item>
