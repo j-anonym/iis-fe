@@ -27,8 +27,8 @@ export class TournamentsTreeMatchComponent implements OnInit {
         sets_away: new FormControl(null, [Validators.required, Validators.max(5), Validators.min(0)]),
         games_home: new FormControl(null, [Validators.required, Validators.min(0)]),
         games_away: new FormControl(null, [Validators.required, Validators.min(0)]),
-        id_home: new FormControl(this.data.one.id_user_home ? this.data.one.id_user_home : this.data.one.id_team_home, [Validators.required]),
-        id_away: new FormControl(this.data.one.id_user_away ? this.data.one.id_user_away : this.data.one.id_team_away, [Validators.required]),
+        id_home: new FormControl({value: this.data.one.id_user_home ? this.data.one.id_user_home : this.data.one.id_team_home, disabled: true}, [Validators.required]),
+        id_away: new FormControl({value: this.data.one.id_user_away ? this.data.one.id_user_away : this.data.one.id_team_away, disabled: true}, [Validators.required]),
         id_referee: new FormControl(this.globals.loggeduserid),
         id_tournament: new FormControl(this.data.one.id_tournament)
       })

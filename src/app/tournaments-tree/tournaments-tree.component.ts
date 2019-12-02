@@ -31,6 +31,7 @@ export class TournamentsTreeComponent implements OnInit {
   }
 
   openDialog(match) {
+    console.log(match);
     const dialogRef = this.dialog.open(TournamentsTreeMatchComponent, {
       disableClose: true,
       hasBackdrop: true,
@@ -79,7 +80,8 @@ export class TournamentsTreeComponent implements OnInit {
   }
 
   insertResult(match) {
-    if ((this.globals.loggeduserid == this.id_staff) || (this.acceptedReferees.find((element) => {return element == this.globals.loggeduserid})))
+    if ((this.globals.loggeduserid == this.id_staff) || (this.acceptedReferees.find((element) => {return element == this.globals.loggeduserid}))
+        || this.globals.isAdmin)
       this.openDialog(match);
   }
 

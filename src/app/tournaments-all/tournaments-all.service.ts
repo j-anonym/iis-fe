@@ -31,4 +31,8 @@ export class TournamentsAllService {
   getAllTeamsTournament(id_tournament) {
     return this.http.get('/api/tournament/team/getall/' + id_tournament);
   }
+
+  getAllTeamsPlayer(id_player) {
+    return this.http.get("/api/team/getjoined/" + id_player);
+  }
 }
