@@ -56,4 +56,8 @@ export class StatisticsComponent implements OnInit, AfterViewInit {
     this.teamDataSource.sort = this.sBSort;
     this.cdRef.detectChanges();
   }
+  
+  getPlayer(row) {
+    this.router.navigate(['/player/'+row.id_stat]);
+  }
 }
