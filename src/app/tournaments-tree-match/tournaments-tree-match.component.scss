@@ -15,3 +15,11 @@ mat-card {
 .example-full-width {
     width: 100%;
 }
+
+.readonly-wrapper {
+    cursor: not-allowed;
+}
+
+.readonly-wrapper .readonly-block {
+    pointer-events: none;
+}
