@@ -90,7 +90,7 @@ export class EditComponent implements OnInit {
         }
 
         if(this.editForm.value.sex) {
-            if(this.f.sex.value === 'M') {
+            if(this.editForm.value.sex === 'M') {
                 this.userService.updateSex(this.globals.loggeduserid, 'M').subscribe(
                     data => {
                     },
