@@ -51,4 +51,8 @@ export class AdminPageService {
     return this.http.put('/api/person/updatelefthanded/' + id_user + '/' + left_handed, null);
   }
   
+  updateSex(id_user, sex) {
+    return this.http.put('/api/person/updatesex/' + id_user + '/' + sex, null);
+  }
+  
 }
