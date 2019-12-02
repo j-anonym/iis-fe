@@ -21,11 +21,9 @@ export class SuccessComponent {
         this.globals.loggeduser = this.usrnm;
         this.accServis.getLoggedUserId(this.usrnm).subscribe(result => {
             this.globals.loggeduserid = JSON.parse(JSON.stringify(result));
-            console.log(this.globals.loggeduserid);
         });
         this.accServis.getLoggedUserAdminStatus(this.usrnm).subscribe( res => {
             this.globals.isAdmin = JSON.parse(JSON.stringify(res));
-            console.log(this.globals.isAdmin);
         });
     }
 }

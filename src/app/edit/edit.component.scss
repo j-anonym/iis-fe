@@ -1,21 +1,14 @@
-:host {
-  display: flex;
-  justify-content: center;
-  margin: 100px 0px;
-}
-
-.mat-form-field {
+.edit-form {
+  min-width: 150px;
+  max-width: 500px;
   width: 100%;
-  min-width: 300px;
 }
 
-mat-card-title,
-mat-card-content {
-  display: flex;
-  justify-content: center;
+.edit {
+  background-image: url('../../assets/icons/outline_create_black_36dp.png');
+  background-size: cover;
 }
 
-.button {
-  display: flex;
-  justify-content: flex-end;
+.example-full-width {
+  width: 100%;
 }

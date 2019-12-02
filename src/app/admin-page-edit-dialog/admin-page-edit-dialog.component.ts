@@ -24,7 +24,6 @@ export class AdminPageEditDialogComponent implements OnInit {
     this.currentDate = moment().toDate();
 
     const date = new Date(this.data.user.birth);
-    console.log(date);
 
     this.createForm = new FormGroup({
       id_user: new FormControl(this.data.user.id_user),

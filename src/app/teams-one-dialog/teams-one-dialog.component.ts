@@ -14,7 +14,6 @@ export class TeamsOneDialogComponent implements OnInit {
   private oneService: TeamsOneService, private router: Router) { }
 
   ngOnInit() {
-    console.log(this.data)
   }
 
   close() {
@@ -22,7 +21,6 @@ export class TeamsOneDialogComponent implements OnInit {
   }
 
   delete() {
-    console.log(this.data.one.id_team)
     this.oneService.deleteTeam(this.data.one.id_team).subscribe(() => {
       this.dialogRef.close();
       this.router.navigate(['teams/all']);
